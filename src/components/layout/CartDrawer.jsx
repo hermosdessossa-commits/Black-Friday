@@ -65,8 +65,8 @@ export default function CartDrawer({ open, onClose }) {
                       <Link to={`/produit/${line.id}`} onClick={onClose} className="shrink-0">
                         <ProductImage
                           product={line.product}
-                          className="h-20 w-20 rounded-xl"
-                          size="text-3xl"
+                          className="rounded-xl"
+                          size="sm"
                         />
                       </Link>
                       <div className="flex min-w-0 flex-1 flex-col">

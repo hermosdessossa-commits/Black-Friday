@@ -98,6 +98,39 @@
   }
 }
 
+/* === Ratios d'aspect === */
+@utility aspect-product { aspect-ratio: 4/5; }
+@utility aspect-hero { aspect-ratio: 16/9; }
+@utility aspect-square { aspect-ratio: 1/1; }
+
+/* === Ombres professionnelles === */
+@utility shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+@utility shadow-md { box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+@utility shadow-lg { box-shadow: 0 12px 28px rgba(0,0,0,0.5); }
+@utility shadow-glow { box-shadow: 0 0 0 1px rgba(255,230,0,0.15), 0 0 24px rgba(255,230,0,0.08); }
+
+/* === Pattern Hero (CSS-only) === */
+@utility hero-pattern {
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,230,0,0.08) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h64v64H0z' fill='none'/%3E%3Ccircle cx='32' cy='32' r='1' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
+  background-size: 100%, 64px;
+}
+
+/* === Transition standardisée === */
+@utility transition-base { transition: all 150ms cubic-bezier(0.22, 1, 0.36, 1); }
+@utility transition-smooth { transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* === Image loading states === */
+@utility img-loading {
+  opacity: 0;
+  background-color: rgba(255,255,255,0.02);
+}
+@utility img-loaded {
+  opacity: 1;
+  transition: opacity 300ms ease-out;
+}
+
 /* Keyframes */
 @keyframes marquee {
   from {

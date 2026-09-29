@@ -34,7 +34,7 @@ export default function ProductCard({ product, index = 0 }) {
         className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-white/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-neon)]/50 hover:shadow-[0_24px_50px_-30px_rgba(255,230,0,0.6)]"
       >
         <div className="relative">
-          <ProductImage product={product} className="h-44 w-full transition-transform duration-500 group-hover:scale-105" />
+          <ProductImage product={product} size="sm" className="transition-transform duration-500 group-hover:scale-105" />
           <div className="absolute left-3 top-3 flex flex-col gap-1.5">
             {off > 0 && <Badge tone="red">-{off}%</Badge>}
             {product.flash && <Badge tone="neon">⚡ Flash</Badge>}

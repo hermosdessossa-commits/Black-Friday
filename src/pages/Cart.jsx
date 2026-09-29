@@ -73,7 +73,7 @@ export default function Cart() {
               className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"
             >
               <Link to={`/produit/${line.id}`} className="shrink-0">
-                <ProductImage product={line.product} className="h-24 w-24 rounded-xl" size="text-4xl" />
+                <ProductImage product={line.product} className="rounded-xl" size="sm" />
               </Link>
 
               <div className="flex min-w-0 flex-1 flex-col">

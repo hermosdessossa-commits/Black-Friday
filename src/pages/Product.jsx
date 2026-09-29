@@ -69,7 +69,7 @@ export default function Product() {
           className="relative"
         >
           <div className="overflow-hidden rounded-3xl border border-white/10">
-            <ProductImage product={product} className="aspect-square w-full" size="text-[9rem]" />
+            <ProductImage product={product} className="aspect-square w-full" size="lg" priority />
           </div>
           <div className="absolute left-4 top-4 flex flex-col gap-2">
             {off > 0 && <Badge tone="red">-{off}%</Badge>}

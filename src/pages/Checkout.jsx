@@ -656,8 +656,8 @@ export default function Checkout() {
                     <div className="relative shrink-0">
                       <ProductImage
                         product={l.product}
-                        className="h-11 w-11 rounded-lg"
-                        size="text-lg"
+                        className="rounded-lg"
+                        size="sm"
                       />
                       <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-neon px-1 text-[10px] font-black text-black">
                         {l.qty}
