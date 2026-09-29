@@ -22,16 +22,15 @@ export default function Newsletter() {
       <div className="container-x relative grid items-center gap-8 md:grid-cols-2">
         <div>
           <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
-            <Zap size={13} /> -15% supplémentaires
+            <Zap size={13} /> -15% supplémentaire avec le code WELCOME15
           </span>
           <h2 className="display-tight text-4xl md:text-5xl lg:text-6xl text-black">
-            Recevez les deals
+            Ne manquez plus{' '}
             <br />
-            <span className="text-black">avant tout le monde</span>
+            <span className="text-black">aucune offre</span>
           </h2>
           <p className="mt-3 max-w-md text-sm text-gray-500 md:text-base">
-            Une alerte e-mail 30 minutes avant l'ouverture de chaque vague. Zéro spam, désinscription
-            en un clic.
+            Recevez nos offres en avant-première, 30 min avant tout le monde. Zéro spam, désinscription en 1 clic.
           </p>
         </div>
 
@@ -46,10 +45,9 @@ export default function Newsletter() {
               <span className="grid h-16 w-16 place-items-center rounded-full bg-black text-white">
                 <Check size={30} />
               </span>
-              <p className="display text-3xl text-black">C'est noté !</p>
+              <p className="display-tight text-3xl text-black">Vous êtes inscrit !</p>
               <p className="text-sm text-gray-500">
-                Votre code <strong className="text-black">WELCOME15</strong> arrive dans votre boîte
-                mail.
+                Votre code <strong className="text-black">WELCOME15</strong> arrive dans votre boîte mail.
               </p>
             </div>
           ) : (

@@ -6,13 +6,13 @@ export default function BestSellers() {
   return (
     <section className="container-x py-16 md:py-24">
       <SectionHeading
-        kicker="Les plus demandés"
+        kicker="Nos best-sellers"
         title={
           <>
-            Top ventes <span className="text-black">-70%</span>
+            Les favoris <span className="text-black">de la semaine</span>
           </>
         }
-        subtitle="Les produits que tout le monde va ajouter au panier avant vous."
+        subtitle="Les produits les plus achetés par nos clients. Stocks vérifiés en temps réel."
       />
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
         {BEST_SELLERS.map((p, i) => (

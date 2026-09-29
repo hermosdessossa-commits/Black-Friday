@@ -73,7 +73,7 @@ export default function Product() {
           </div>
           <div className="absolute left-4 top-4 flex flex-col gap-2">
             {off > 0 && <Badge tone="default">-{off}%</Badge>}
-            {product.flash && <Badge tone="secondary">⚡ Flash deal</Badge>}
+            {product.flash && <Badge tone="secondary">Flash deal</Badge>}
           </div>
         </motion.div>
 
@@ -101,13 +101,13 @@ export default function Product() {
             </span>
             <span className="text-lg text-gray-400 line-through">{formatPrice(product.price)}</span>
             <span className="rounded-full bg-black px-3 py-1 text-sm font-black text-white">
-              Vous économisez {formatPrice(product.price - product.salePrice)}
+              Économisez {formatPrice(product.price - product.salePrice)}
             </span>
           </div>
 
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-gray-300 bg-gray-50 px-4 py-3">
             <span className="text-xs font-bold uppercase tracking-wider text-gray-600">
-              ⏳ Offre se termine dans
+              Offre se termine dans
             </span>
             <Countdown target={nextFriday2359()} />
           </div>
@@ -117,7 +117,7 @@ export default function Product() {
           {product.options.length > 0 && (
             <div className="mt-6">
               <h2 className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                Option
+                Choisir une option
               </h2>
               <div className="flex flex-wrap gap-2">
                 {product.options.map((opt) => (
@@ -166,7 +166,7 @@ export default function Product() {
                 </>
               ) : (
                 <>
-                  Ajouter — {formatPrice(product.salePrice * qty)}
+                  Ajouter au panier — {formatPrice(product.salePrice * qty)}
                 </>
               )}
             </Button>
@@ -174,10 +174,10 @@ export default function Product() {
 
           <p className="mt-3 text-sm text-gray-500">
             {product.stock > 10 ? (
-              <span className="text-black">✓ En stock — expédié sous 24 h</span>
+              <span className="text-black">En stock — expédié sous 24 h</span>
             ) : (
               <span className="text-black">
-                ⚠ Plus que {product.stock} en stock
+                Plus que {product.stock} en stock
               </span>
             )}
           </p>

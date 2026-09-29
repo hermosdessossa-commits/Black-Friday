@@ -1,4 +1,3 @@
-import { categoryEmoji } from '../../data/categories'
 import { useState } from 'react'
 
 const BLUR_PLACEHOLDER = "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA"
@@ -27,7 +26,7 @@ function getFallbackGradient(id) {
   return fallbackGradients[Math.abs(hash) % fallbackGradients.length]
 }
 
-/** Visuel produit : image réelle avec blur placeholder, fallback dégradé gris + emoji. */
+/** Visuel produit : image réelle avec blur placeholder, fallback dégradé gris propre. */
 export default function ProductImage({ product, className = '', size = 'lg', priority = false, alt }) {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
@@ -56,12 +55,9 @@ export default function ProductImage({ product, className = '', size = 'lg', pri
   return (
     <div className={`relative flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br ${gradient} ${sizeClasses[size]} ${className}`}>
       <div className="absolute inset-0 opacity-30 [background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.03)_0_1px,transparent_1px_8px)]" />
-      <span className="text-7xl md:text-9xl select-none drop-shadow-sm" role="img" aria-label={product.name}>
-        {product.emoji}
-      </span>
-      <span className="absolute bottom-2 left-3 rounded bg-black/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400 backdrop-blur-sm">
-        {categoryEmoji(product.category)}
-      </span>
+      <svg className="w-20 h-20 md:w-24 md:h-24 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
     </div>
   )
 }

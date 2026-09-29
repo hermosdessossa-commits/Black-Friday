@@ -17,19 +17,19 @@ export default function FlashDeals() {
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
             <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
-              <Flame size={13} className="animate-pulse" /> Flash deals
+              <Flame size={13} className="animate-pulse" /> Flash Deals
             </span>
             <h2 className="display-tight text-4xl md:text-5xl lg:text-6xl text-black">
-              Ça part <span className="text-black">vite</span>
+              Des offres qui partent <span className="text-black">en quelques heures</span>
             </h2>
             <p className="mt-2 text-sm text-gray-500 md:text-base">
-              {FLASH_DEALS.length} offres à durée limitée — jusqu'à épuisement du stock.
+              {FLASH_DEALS.length} produits en promotion flash — quantités limitées, réapprovisionnement impossible.
             </p>
           </div>
 
           <div className="flex flex-col items-start gap-2 md:items-end">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-              Fin de l'offre dans
+              Fin des flash deals dans
             </span>
             <Countdown target={target} />
           </div>
@@ -53,7 +53,7 @@ export default function FlashDeals() {
             to="/boutique?deals=1"
             className="group inline-flex items-center gap-2 rounded-md border border-gray-300 px-7 py-3 text-xs font-semibold uppercase tracking-wider text-gray-600 transition-colors hover:bg-gray-50 hover:border-gray-400"
           >
-            Tous les deals
+            Voir tous les flash deals
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>

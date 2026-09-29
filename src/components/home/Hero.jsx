@@ -8,9 +8,9 @@ import Button from '../ui/Button'
 const TITLE = ['BLACK', 'FRIDAY']
 
 const stats = [
-  { value: '-70%', label: 'Sur 1 200 produits' },
+  { value: '70%', label: 'De remise max' },
   { value: '48h', label: 'Livraison express' },
-  { value: '4.8/5', label: '12 480 avis' },
+  { value: '4,8/5', label: 'Note clients' },
 ]
 
 const HeroShapes = () => (
@@ -58,7 +58,7 @@ export default function Hero() {
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600"
           >
             <Flame size={14} className="animate-pulse" />
-            Édition limitée — stock qui fond
+            Édition limitée — stocks limités
           </motion.div>
 
           <h1
@@ -90,9 +90,9 @@ export default function Hero() {
             transition={{ delay: 0.7 }}
             className="mt-6 max-w-lg text-base leading-relaxed text-gray-600 md:text-lg"
           >
-            Une seule journée. Des remises jusqu'à{' '}
-            <strong className="text-black">-70%</strong> sur la tech, la mode et la maison.
-            Quand c'est parti, c'est parti.
+            Une seule semaine. Des réductions jusqu'à{' '}
+            <strong className="text-black">70%</strong> sur la tech, la mode et la maison.
+            Les meilleures offres de l'année.
           </motion.p>
 
           <motion.div
@@ -103,14 +103,14 @@ export default function Hero() {
           >
             <Link to="/boutique">
               <Button size="lg">
-                <Sparkles size={17} /> Voir les deals <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
+                <Sparkles size={17} /> Accéder aux offres <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <Link
               to="/boutique?deals=1"
               className="inline-flex h-13 items-center rounded-md border border-gray-300 px-8 text-sm font-semibold uppercase tracking-wider text-black transition-colors hover:bg-gray-50 hover:border-gray-400"
             >
-              Deals du moment
+              Voir les flash deals
             </Link>
           </motion.div>
 
@@ -140,15 +140,15 @@ export default function Hero() {
             -70%
           </div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-            La vente se termine dans
+            L'offre se termine dans
           </p>
           <Countdown target={nextFriday2359()} big className="mt-4 justify-center" />
 
           <div className="mt-6 space-y-3 border-t border-gray-200 pt-5">
             {[
               ['Livraison offerte', 'dès 50 €'],
-              ['Paiement 3x', 'sans frais'],
-              ['Retours', '30 jours'],
+              ['Paiement en 3x', 'sans frais'],
+              ['Retours gratuits', '30 jours'],
             ].map(([a, b]) => (
               <div key={a} className="flex items-center justify-between text-sm">
                 <span className="text-gray-600">{a}</span>
@@ -159,7 +159,7 @@ export default function Hero() {
 
           <Link to="/boutique" className="mt-6 block">
             <Button size="lg" full>
-              J'en profite
+              Profiter des offres
             </Button>
           </Link>
         </motion.aside>
