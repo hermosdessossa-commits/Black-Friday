@@ -137,7 +137,7 @@ export default function Shop() {
           value={sort}
           onChange={(e) => setSort(e.target.value)}
           aria-label="Trier les produits"
-          className="h-11 w-full cursor-pointer rounded-xl border border-white/10 bg-ink-800 px-3 text-sm text-white focus:border-neon focus:outline-none"
+          className="h-11 w-full cursor-pointer rounded-xl border border-white/10 bg-white/10 px-3 text-sm text-white focus:border-[var(--color-neon)] focus:outline-none"
         >
           {SORTS.map((s) => (
             <option key={s.id} value={s.id}>
@@ -150,7 +150,7 @@ export default function Shop() {
       <button
         type="button"
         onClick={reset}
-        className="w-full cursor-pointer rounded-xl border border-white/15 py-3 text-xs font-bold uppercase tracking-widest text-white/60 transition-colors hover:border-alarm hover:text-alarm"
+        className="w-full cursor-pointer rounded-xl border border-white/15 py-3 text-xs font-bold uppercase tracking-widest text-white/60 transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]"
       >
         Réinitialiser
       </button>
@@ -160,7 +160,7 @@ export default function Shop() {
   return (
     <div className="container-x py-10 md:py-14">
       {/* Fil d'Ariane */}
-      <nav className="mb-6 text-xs text-muted" aria-label="Fil d'Ariane">
+      <nav className="mb-6 text-xs text-white/50" aria-label="Fil d'Ariane">
         <Link to="/" className="hover:text-neon">
           Accueil
         </Link>{' '}
@@ -172,7 +172,7 @@ export default function Shop() {
           <h1 className="display text-5xl text-white md:text-7xl">
             {dealsOnly ? (
               <>
-                Flash <span className="text-alarm">deals</span>
+                Flash <span className="text-[var(--color-neon)]">deals</span>
               </>
             ) : activeCat ? (
               <>
@@ -185,7 +185,7 @@ export default function Shop() {
               </>
             )}
           </h1>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-2 text-sm text-white/50">
             {list.length} produit{list.length > 1 ? 's' : ''} en promo
           </p>
         </div>
@@ -202,14 +202,14 @@ export default function Shop() {
 
       <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
         <aside className={`${filtersOpen ? 'block' : 'hidden'} lg:block`}>
-          <div className="sticky top-28 rounded-2xl border border-white/10 bg-ink-800/60 p-5">
+          <div className="sticky top-28 rounded-2xl border border-white/10 bg-white/5 p-5">
             <div className="mb-5 flex items-center justify-between">
               <h2 className="display text-xl text-white">Filtres</h2>
               <button
                 type="button"
                 onClick={() => setFiltersOpen(false)}
                 aria-label="Fermer les filtres"
-                className="cursor-pointer text-white/50 hover:text-alarm lg:hidden"
+                className="cursor-pointer text-white/50 hover:text-[var(--color-neon)] lg:hidden"
               >
                 <X size={18} />
               </button>
@@ -223,7 +223,7 @@ export default function Shop() {
             <div className="flex flex-col items-center gap-4 rounded-2xl border border-dashed border-white/15 py-20 text-center">
               <span className="text-5xl">🔍</span>
               <p className="display text-2xl text-white">Aucun produit</p>
-              <p className="text-sm text-muted">
+              <p className="text-sm text-white/50">
                 Essayez d'élargir le prix maximum ou de changer de catégorie.
               </p>
               <Button onClick={reset}>Réinitialiser les filtres</Button>

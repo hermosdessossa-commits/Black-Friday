@@ -29,7 +29,7 @@ export default function CartDrawer({ open, onClose }) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-white/10 bg-ink-900"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-white/10 bg-[var(--color-bg)]"
             role="dialog"
             aria-label="Panier"
           >
@@ -52,7 +52,7 @@ export default function CartDrawer({ open, onClose }) {
                 <div className="grid h-20 w-20 place-items-center rounded-full bg-white/5 text-white/30">
                   <ShoppingBag size={32} />
                 </div>
-                <p className="text-sm text-muted">Votre panier est vide.</p>
+                <p className="text-sm text-white/50">Votre panier est vide.</p>
                 <Link to="/boutique" onClick={onClose}>
                   <Button>Voir les deals</Button>
                 </Link>
@@ -78,10 +78,10 @@ export default function CartDrawer({ open, onClose }) {
                           {line.product.name}
                         </Link>
                         {line.option && (
-                          <span className="text-xs text-muted">{line.option}</span>
+                          <span className="text-xs text-white/50">{line.option}</span>
                         )}
                         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-                          <div className="flex items-center gap-1 rounded-full border border-white/15 bg-ink-800">
+                          <div className="flex items-center gap-1 rounded-full border border-white/15 bg-white/10">
                             <button
                               type="button"
                               aria-label="Diminuer"
@@ -110,7 +110,7 @@ export default function CartDrawer({ open, onClose }) {
                               type="button"
                               aria-label={`Retirer ${line.product.name}`}
                               onClick={() => remove(idx)}
-                              className="cursor-pointer text-white/40 hover:text-alarm"
+                              className="cursor-pointer text-white/40 hover:text-[var(--color-neon)]"
                             >
                               <Trash2 size={15} />
                             </button>
@@ -121,8 +121,8 @@ export default function CartDrawer({ open, onClose }) {
                   ))}
                 </ul>
 
-                <div className="border-t border-white/10 bg-ink-800/60 px-5 py-5">
-                  <div className="mb-1 flex items-center justify-between text-sm text-muted">
+                <div className="border-t border-white/10 bg-[var(--color-bg)]/60 px-5 py-5">
+                  <div className="mb-1 flex items-center justify-between text-sm text-white/50">
                     <span>Sous-total</span>
                     <span className="font-display text-2xl text-white">{formatPrice(subtotal)}</span>
                   </div>

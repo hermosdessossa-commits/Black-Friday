@@ -1,10 +1,7 @@
 export default function Badge({ children, tone = 'neon', className = '', ...props }) {
   const tones = {
-    neon: 'bg-neon text-black',
-    red: 'bg-alarm text-white animate-pulse-glow',
-    dark: 'bg-black/70 text-white border border-white/15 backdrop-blur',
-    mint: 'bg-mint text-black',
-    outline: 'border border-neon text-neon bg-neon/10',
+    neon: 'bg-[var(--color-neon)] text-[var(--color-bg)]',
+    dark: 'bg-white/10 text-[var(--color-text)] border border-white/20',
   }
   return (
     <span

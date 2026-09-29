@@ -14,7 +14,7 @@ export default function Confirmation() {
     return (
       <div className="container-x flex min-h-[55vh] flex-col items-center justify-center gap-4 py-16 text-center">
         <h1 className="display text-4xl md:text-6xl">Commande introuvable</h1>
-        <p className="text-sm text-muted">
+        <p className="text-sm text-white/50">
           Cette commande n'existe pas sur cet appareil (les commandes sont stockées en local).
         </p>
         <Link to="/boutique">
@@ -34,7 +34,7 @@ export default function Confirmation() {
           initial={{ scale: 0.6, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 200, damping: 14 }}
-          className="mx-auto mb-7 grid h-24 w-24 place-items-center rounded-full bg-mint text-black shadow-[0_0_60px_rgba(0,230,118,0.45)]"
+          className="mx-auto mb-7 grid h-24 w-24 place-items-center rounded-full bg-[var(--color-neon)] text-[var(--color-bg)] shadow-[0_0_60px_rgba(255,230,0,0.45)]"
         >
           <Check size={52} strokeWidth={3} />
         </motion.div>
@@ -44,7 +44,7 @@ export default function Confirmation() {
             Commande confirmée
           </p>
           <h1 className="display mt-2 text-5xl text-white md:text-7xl">Merci !</h1>
-          <p className="mt-3 text-sm text-muted md:text-base">
+          <p className="mt-3 text-sm text-white/50 md:text-base">
             Un e-mail de confirmation part vers{' '}
             <strong className="text-white">{order.email || 'votre adresse'}</strong>.
           </p>
@@ -54,7 +54,7 @@ export default function Confirmation() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25 }}
-          className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-ink-800/70"
+          className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-[var(--color-bg)]/70"
         >
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-neon px-6 py-4 text-black">
             <span className="text-xs font-black uppercase tracking-widest">N° de commande</span>
@@ -72,7 +72,7 @@ export default function Confirmation() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-bold">{it.name}</p>
-                    <p className="text-xs text-muted">
+                    <p className="text-xs text-white/50">
                       Qté {it.qty}
                       {it.option ? ` · ${it.option}` : ''} · {formatPrice(it.unitPrice)}
                     </p>
@@ -86,18 +86,18 @@ export default function Confirmation() {
 
             <dl className="space-y-2 border-t border-white/10 pt-5 text-sm">
               <div className="flex justify-between">
-                <dt className="text-muted">Sous-total</dt>
+                <dt className="text-white/50">Sous-total</dt>
                 <dd>{formatPrice(order.subtotal)}</dd>
               </div>
               {order.discount > 0 && (
-                <div className="flex justify-between text-mint">
+                <div className="flex justify-between text-[var(--color-neon)]">
                   <dt>Réduction {order.promoCode}</dt>
                   <dd>−{formatPrice(order.discount)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
-                <dt className="text-muted">Livraison — {ship.label}</dt>
-                <dd>{order.shipping === 0 ? <span className="text-mint">Offerte</span> : formatPrice(order.shipping)}</dd>
+                <dt className="text-white/50">Livraison — {ship.label}</dt>
+                <dd>{order.shipping === 0 ? <span className="text-[var(--color-neon)]">Offerte</span> : formatPrice(order.shipping)}</dd>
               </div>
               <div className="flex items-end justify-between border-t border-white/10 pt-3">
                 <dt className="font-bold uppercase tracking-wider">Total payé</dt>
@@ -112,11 +112,11 @@ export default function Confirmation() {
                   <p className="font-bold text-white">
                     {address.firstName} {address.lastName}
                   </p>
-                  <p className="text-muted">
+                  <p className="text-white/50">
                     {address.address}
                     {address.complement ? `, ${address.complement}` : ''}
                   </p>
-                  <p className="text-muted">
+                  <p className="text-white/50">
                     {address.zip} {address.city}
                   </p>
                 </div>

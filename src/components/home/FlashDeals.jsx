@@ -10,25 +10,25 @@ export default function FlashDeals() {
   const target = nextFriday2359()
 
   return (
-    <section id="flash" className="relative overflow-hidden bg-gradient-to-b from-ink-900 via-ink to-ink-900 py-16 md:py-24">
+    <section id="flash" className="relative overflow-hidden bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)] to-[var(--color-bg)] py-16 md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,230,0,0.08),transparent_60%)]" />
 
       <div className="container-x relative">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-alarm/50 bg-alarm/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-alarm">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--color-neon)]/50 bg-[var(--color-neon)]/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]">
               <Flame size={13} className="animate-pulse" /> Flash deals
             </span>
             <h2 className="display text-4xl text-white md:text-6xl">
-              Ça part <span className="text-alarm">vite</span>
+              Ça part <span className="text-[var(--color-neon)]">vite</span>
             </h2>
-            <p className="mt-2 text-sm text-muted md:text-base">
+            <p className="mt-2 text-sm text-white/50 md:text-base">
               {FLASH_DEALS.length} offres à durée limitée — jusqu'à épuisement du stock.
             </p>
           </div>
 
           <div className="flex flex-col items-start gap-2 md:items-end">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">
               Fin de l'offre dans
             </span>
             <Countdown target={target} />

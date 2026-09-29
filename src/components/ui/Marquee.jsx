@@ -5,7 +5,7 @@ export default function Marquee({ items, className = '', reverse = false, speed 
       {items.map((t, i) => (
         <span key={i} className="flex items-center">
           <span className="px-5 font-display text-lg tracking-wide md:text-xl">{t}</span>
-          <span className="text-alarm">✦</span>
+          <span className="text-[var(--color-bg)]">✦</span>
         </span>
       ))}
     </div>

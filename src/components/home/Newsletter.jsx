@@ -18,7 +18,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-gradient-to-br from-alarm via-red-700 to-ink py-16 md:py-24">
+    <section className="relative overflow-hidden border-t border-white/10 bg-gradient-to-br from-[var(--color-neon)] via-[var(--color-neon)] to-[var(--color-bg)] py-16 md:py-24">
       <div className="absolute inset-0 opacity-10 [background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.8)_0_2px,transparent_2px_18px)]" />
       <div className="container-x relative grid items-center gap-8 md:grid-cols-2">
         <div>
@@ -44,7 +44,7 @@ export default function Newsletter() {
         >
           {sent ? (
             <div className="flex flex-col items-center gap-3 py-6 text-center">
-              <span className="grid h-16 w-16 place-items-center rounded-full bg-mint text-black">
+              <span className="grid h-16 w-16 place-items-center rounded-full bg-[var(--color-neon)] text-[var(--color-bg)]">
                 <Check size={30} />
               </span>
               <p className="display text-3xl text-white">C'est noté !</p>

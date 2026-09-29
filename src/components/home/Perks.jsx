@@ -11,19 +11,19 @@ const PERKS = [
 
 export default function Perks() {
   return (
-    <section className="border-y border-white/10 bg-ink-900">
+    <section className="border-y border-white/10 bg-[var(--color-bg)]">
       <div className="container-x grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/8 md:grid-cols-3 lg:grid-cols-6">
         {PERKS.map(({ icon: Icon, title, text }) => (
           <div
             key={title}
-            className="group flex flex-col items-center gap-2 bg-ink-900 px-4 py-7 text-center transition-colors hover:bg-ink-800"
+            className="group flex flex-col items-center gap-2 bg-[var(--color-bg)] px-4 py-7 text-center transition-colors hover:bg-white/5"
           >
             <Icon
               size={26}
-              className="text-neon transition-transform group-hover:-translate-y-1 group-hover:scale-110"
+              className="text-[var(--color-neon)] transition-transform group-hover:-translate-y-1 group-hover:scale-110"
             />
             <span className="text-sm font-bold text-white">{title}</span>
-            <span className="text-xs text-muted">{text}</span>
+            <span className="text-xs text-white/50">{text}</span>
           </div>
         ))}
       </div>

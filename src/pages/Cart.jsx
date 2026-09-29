@@ -43,7 +43,7 @@ export default function Cart() {
           <ShoppingBag size={40} />
         </div>
         <h1 className="display text-4xl text-white md:text-6xl">Panier vide</h1>
-        <p className="max-w-sm text-sm text-muted">
+        <p className="max-w-sm text-sm text-white/50">
           Les meilleures affaires partent en quelques heures. Ne restez pas sur la touche.
         </p>
         <Link to="/boutique">
@@ -70,7 +70,7 @@ export default function Cart() {
               layout
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-ink-800/70 p-4"
+              className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"
             >
               <Link to={`/produit/${line.id}`} className="shrink-0">
                 <ProductImage product={line.product} className="h-24 w-24 rounded-xl" size="text-4xl" />
@@ -85,7 +85,7 @@ export default function Cart() {
                     >
                       {line.product.name}
                     </Link>
-                    <p className="text-xs text-muted">
+                    <p className="text-xs text-white/50">
                       {line.product.brand}
                       {line.option ? ` · ${line.option}` : ''}
                     </p>
@@ -94,14 +94,14 @@ export default function Cart() {
                     type="button"
                     onClick={() => remove(idx)}
                     aria-label={`Retirer ${line.product.name}`}
-                    className="cursor-pointer text-white/40 transition-colors hover:text-alarm"
+                    className="cursor-pointer text-white/40 transition-colors hover:text-[var(--color-neon)]"
                   >
                     <Trash2 size={17} />
                   </button>
                 </div>
 
                 <div className="mt-auto flex items-center justify-between gap-3 pt-3">
-                  <div className="flex items-center gap-1 rounded-full border border-white/15 bg-ink-700">
+                  <div className="flex items-center gap-1 rounded-full border border-white/15 bg-white/10">
                     <button
                       type="button"
                       aria-label="Diminuer"
@@ -137,7 +137,7 @@ export default function Cart() {
 
         {/* Résumé */}
         <aside className="lg:sticky lg:top-28 lg:self-start">
-          <div className="rounded-2xl border border-white/10 bg-ink-800/70 p-6">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h2 className="display mb-5 text-2xl text-white">Récapitulatif</h2>
 
             <form onSubmit={applyPromo} className="mb-5 flex gap-2">
@@ -146,7 +146,7 @@ export default function Cart() {
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="Code promo"
                 aria-label="Code promo"
-                className="h-11 min-w-0 flex-1 rounded-xl border border-white/10 bg-ink-700 px-4 text-sm uppercase text-white placeholder:normal-case placeholder:text-white/35 focus:border-neon focus:outline-none"
+                className="h-11 min-w-0 flex-1 rounded-xl border border-white/10 bg-white/10 px-4 text-sm uppercase text-white placeholder:normal-case placeholder:text-white/35 focus:border-[var(--color-neon)] focus:outline-none"
               />
               <button
                 type="submit"
@@ -156,30 +156,30 @@ export default function Cart() {
                 <Tag size={17} />
               </button>
             </form>
-            <p aria-live="polite" className="-mt-3 mb-4 min-h-4 text-xs font-semibold text-alarm">
+            <p aria-live="polite" className="-mt-3 mb-4 min-h-4 text-xs font-semibold text-[var(--color-neon)]">
               {error}
             </p>
             {promoCode && (
-              <p className="-mt-3 mb-4 text-xs font-semibold text-mint">
+              <p className="-mt-3 mb-4 text-xs font-semibold text-[var(--color-neon)]">
                 ✓ Code {promoCode} appliqué ({PROMO_CODES[promoCode].label})
               </p>
             )}
 
             <dl className="space-y-3 border-t border-white/10 pt-4 text-sm">
               <div className="flex justify-between">
-                <dt className="text-muted">Sous-total</dt>
+                <dt className="text-white/50">Sous-total</dt>
                 <dd className="font-semibold">{formatPrice(subtotal)}</dd>
               </div>
               {discountAmount > 0 && (
-                <div className="flex justify-between text-mint">
+                <div className="flex justify-between text-[var(--color-neon)]">
                   <dt>Réduction {promoCode}</dt>
                   <dd>−{formatPrice(discountAmount)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
-                <dt className="text-muted">Livraison</dt>
+                <dt className="text-white/50">Livraison</dt>
                 <dd className="font-semibold">
-                  {shipping === 0 ? <span className="text-mint">Offerte</span> : formatPrice(shipping)}
+                  {shipping === 0 ? <span className="text-[var(--color-neon)]">Offerte</span> : formatPrice(shipping)}
                 </dd>
               </div>
               <div className="flex items-end justify-between border-t border-white/10 pt-4">

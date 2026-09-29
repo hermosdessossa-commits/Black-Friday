@@ -25,7 +25,7 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <div className="flex min-h-screen flex-col bg-ink">
+    <div className="flex min-h-screen flex-col bg-[var(--color-bg)]">
       <ScrollToTop />
       <Header onCartClick={() => setCartOpen(true)} />
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />

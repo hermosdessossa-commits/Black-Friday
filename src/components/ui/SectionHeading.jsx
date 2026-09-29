@@ -22,7 +22,7 @@ export default function SectionHeading({ kicker, title, subtitle, align = 'cente
       >
         {title}
       </motion.h2>
-      {subtitle && <p className="mx-auto mt-3 max-w-xl text-sm text-muted md:text-base">{subtitle}</p>}
+      {subtitle && <p className="mx-auto mt-3 max-w-xl text-sm text-white/50 md:text-base">{subtitle}</p>}
     </div>
   )
 }

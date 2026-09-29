@@ -15,10 +15,10 @@ export default function Stepper({ current }) {
               <span
                 className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-extrabold transition-all md:h-10 md:w-10 ${
                   done
-                    ? 'bg-mint text-black'
+                    ? 'bg-[var(--color-neon)] text-[var(--color-bg)]'
                     : active
-                      ? 'bg-neon text-black shadow-[0_0_20px_rgba(255,230,0,0.5)]'
-                      : 'border border-white/15 bg-ink-800 text-white/40'
+                      ? 'bg-[var(--color-neon)] text-[var(--color-bg)] shadow-[0_0_20px_rgba(255,230,0,0.5)]'
+                      : 'border border-white/15 bg-white/10 text-white/40'
                 }`}
               >
                 {done ? <Check size={16} /> : n}
@@ -33,7 +33,7 @@ export default function Stepper({ current }) {
             </div>
             {i < STEPS.length - 1 && (
               <span
-                className={`h-0.5 flex-1 rounded ${done ? 'bg-mint' : 'bg-white/10'}`}
+                className={`h-0.5 flex-1 rounded ${done ? 'bg-[var(--color-neon)]' : 'bg-white/10'}`}
                 aria-hidden
               />
             )}

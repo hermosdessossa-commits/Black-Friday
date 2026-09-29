@@ -2,10 +2,8 @@ import { Loader2 } from 'lucide-react'
 
 const variants = {
   primary:
-    'bg-neon text-black hover:bg-white active:translate-y-px shadow-[0_0_0_0_rgba(255,230,0,0)] hover:shadow-[0_8px_30px_-8px_rgba(255,230,0,0.55)]',
-  danger: 'bg-alarm text-white hover:bg-red-500 active:translate-y-px',
-  ghost: 'bg-white/5 text-white border border-white/10 hover:border-neon/60 hover:text-neon',
-  dark: 'bg-ink-700 text-white border border-white/10 hover:border-white/30',
+    'bg-[var(--color-neon)] text-[var(--color-bg)] hover:bg-[var(--color-text)] active:translate-y-px shadow-[0_0_0_0_rgba(255,230,0,0)] hover:shadow-[0_8px_30px_-8px_rgba(255,230,0,0.55)]',
+  ghost: 'bg-transparent text-[var(--color-text)] border border-white/20 hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]',
 }
 
 const sizes = {

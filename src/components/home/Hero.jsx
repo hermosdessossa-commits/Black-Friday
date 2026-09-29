@@ -17,7 +17,7 @@ export default function Hero() {
     <section className="relative overflow-hidden border-b border-white/10">
       {/* Fonds */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,230,0,0.16),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,45,45,0.18),transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,230,0,0.18),transparent_45%)]" />
       <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.6)_1px,transparent_1px)] [background-size:64px_64px]" />
 
       <div className="container-x relative grid gap-10 py-14 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
@@ -26,7 +26,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-alarm/50 bg-alarm/15 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.2em] text-alarm"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-neon)]/50 bg-[var(--color-neon)]/15 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]"
           >
             <Flame size={14} className="animate-pulse" />
             Édition limitée — stock qui fond
@@ -97,7 +97,7 @@ export default function Hero() {
           >
             {stats.map((s) => (
               <div key={s.label}>
-                <dt className="order-2 text-xs uppercase tracking-wider text-muted">{s.label}</dt>
+                <dt className="order-2 text-xs uppercase tracking-wider text-white/50">{s.label}</dt>
                 <dd className="font-display text-3xl text-neon">{s.value}</dd>
               </div>
             ))}
@@ -109,12 +109,12 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94, rotate: -2 }}
           animate={{ opacity: 1, scale: 1, rotate: -1.5 }}
           transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
-          className="relative rounded-3xl border border-neon/30 bg-gradient-to-b from-ink-700 to-ink p-6 shadow-[0_40px_80px_-40px_rgba(255,230,0,0.5)] md:p-8"
+          className="relative rounded-3xl border border-[var(--color-neon)]/30 bg-gradient-to-b from-white/5 to-[var(--color-bg)] p-6 shadow-[0_40px_80px_-40px_rgba(255,230,0,0.5)] md:p-8"
         >
-          <div className="absolute -right-3 -top-4 rotate-6 rounded-full bg-alarm px-4 py-2 font-display text-xl text-white shadow-lg">
+          <div className="absolute -right-3 -top-4 rotate-6 rounded-full bg-[var(--color-neon)] px-4 py-2 font-display text-xl text-[var(--color-bg)] shadow-lg">
             -70%
           </div>
-          <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-muted">
+          <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-white/50">
             La vente se termine dans
           </p>
           <Countdown target={nextFriday2359()} big className="mt-4 justify-center" />

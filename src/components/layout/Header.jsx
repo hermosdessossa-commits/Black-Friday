@@ -32,7 +32,7 @@ export default function Header({ onCartClick }) {
   return (
     <>
       {/* Bandeau promo */}
-      <div className="relative z-40 bg-alarm py-1.5 text-center text-[11px] font-extrabold uppercase tracking-widest text-white md:text-xs">
+      <div className="relative z-40 bg-[var(--color-neon)] py-1.5 text-center text-[11px] font-extrabold uppercase tracking-widest text-[var(--color-bg)] md:text-xs">
         <span className="inline-flex items-center gap-2">
           <Zap size={13} className="animate-bounce" />
           Livraison offerte dès 50 € — Code BLACKFRIDAY = -10% supplémentaires
@@ -43,8 +43,8 @@ export default function Header({ onCartClick }) {
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'border-b border-white/10 bg-ink/90 backdrop-blur-xl'
-            : 'border-b border-transparent bg-ink/40 backdrop-blur-sm'
+            ? 'border-b border-white/10 bg-[var(--color-bg)]/90 backdrop-blur-xl'
+            : 'border-b border-transparent bg-[var(--color-bg)]/40 backdrop-blur-sm'
         }`}
       >
         <div className="container-x flex h-16 items-center justify-between gap-4 md:h-20">
@@ -93,7 +93,7 @@ export default function Header({ onCartClick }) {
                   key={count}
                   initial={{ scale: 0.4 }}
                   animate={{ scale: 1 }}
-                  className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-alarm px-1 text-[10px] font-black text-white"
+                  className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[var(--color-neon)] px-1 text-[10px] font-black text-[var(--color-bg)]"
                 >
                   {count}
                 </motion.span>
@@ -116,7 +116,7 @@ export default function Header({ onCartClick }) {
           <motion.nav
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
-            className="overflow-hidden border-t border-white/10 bg-ink md:hidden"
+            className="overflow-hidden border-t border-white/10 bg-[var(--color-bg)] md:hidden"
             aria-label="Navigation mobile"
           >
             <div className="container-x flex flex-col gap-1 py-4">

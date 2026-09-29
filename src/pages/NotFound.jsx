@@ -6,7 +6,7 @@ export default function NotFound() {
     <div className="container-x flex min-h-[65vh] flex-col items-center justify-center gap-5 py-16 text-center">
       <span className="font-display text-[22vw] leading-none text-neon md:text-[14rem]">404</span>
       <h1 className="display text-3xl text-white md:text-5xl">Page introuvable</h1>
-      <p className="max-w-md text-sm text-muted">
+      <p className="max-w-md text-sm text-white/50">
         Cette page a dû partir en soldes. Revenez vers les deals avant qu'ils ne disparaissent.
       </p>
       <div className="flex flex-wrap justify-center gap-3">

@@ -31,7 +31,7 @@ export default function ProductCard({ product, index = 0 }) {
     >
       <Link
         to={`/produit/${product.id}`}
-        className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-ink-800 transition-all duration-300 hover:-translate-y-1.5 hover:border-neon/50 hover:shadow-[0_24px_50px_-30px_rgba(255,230,0,0.6)]"
+        className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-white/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-neon)]/50 hover:shadow-[0_24px_50px_-30px_rgba(255,230,0,0.6)]"
       >
         <div className="relative">
           <ProductImage product={product} className="h-44 w-full transition-transform duration-500 group-hover:scale-105" />
@@ -48,7 +48,7 @@ export default function ProductCard({ product, index = 0 }) {
 
         <div className="flex flex-1 flex-col gap-2 p-4">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-muted">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-white/50">
               {product.brand}
             </span>
             <Stars rating={product.rating} />
@@ -71,8 +71,8 @@ export default function ProductCard({ product, index = 0 }) {
               aria-label={`Ajouter ${product.name} au panier`}
               className={`grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-full transition-all ${
                 added
-                  ? 'bg-mint text-black'
-                  : 'bg-white/10 text-white hover:scale-110 hover:bg-neon hover:text-black'
+                  ? 'bg-[var(--color-neon)] text-[var(--color-bg)]'
+                  : 'bg-white/10 text-white hover:scale-110 hover:bg-[var(--color-neon)] hover:text-[var(--color-bg)]'
               }`}
             >
               {added ? <Check size={18} /> : <Plus size={18} />}

@@ -35,7 +35,7 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink-900">
+    <footer className="border-t border-white/10 bg-[var(--color-bg)]">
       <div className="container-x grid gap-10 py-14 md:grid-cols-[1.4fr_repeat(3,1fr)] md:py-18">
         <div>
           <div className="flex items-center gap-2">
@@ -46,7 +46,7 @@ export default function Footer() {
               Black<span className="text-neon">Friday</span>
             </span>
           </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
             La vente la plus attendue de l'année. Des remises réelles, un stock limité, et des
             offres qui ne reviendront pas avant l'an prochain.
           </p>

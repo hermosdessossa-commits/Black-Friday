@@ -46,7 +46,7 @@ export default function Product() {
 
   return (
     <div className="container-x py-8 md:py-12">
-      <nav className="mb-6 flex items-center gap-2 text-xs text-muted" aria-label="Fil d'Ariane">
+      <nav className="mb-6 flex items-center gap-2 text-xs text-white/50" aria-label="Fil d'Ariane">
         <Link to="/" className="hover:text-neon">
           Accueil
         </Link>
@@ -84,7 +84,7 @@ export default function Product() {
               {product.brand}
             </span>
             <span className="h-1 w-1 rounded-full bg-white/30" />
-            <span className="text-xs uppercase tracking-wider text-muted">
+            <span className="text-xs uppercase tracking-wider text-white/50">
               {categoryLabel(product.category)}
             </span>
           </div>
@@ -95,18 +95,18 @@ export default function Product() {
             <Stars rating={product.rating} reviews={product.reviews} size={16} />
           </div>
 
-          <div className="mt-6 flex flex-wrap items-end gap-4 rounded-2xl border border-white/10 bg-ink-800/70 p-5">
+          <div className="mt-6 flex flex-wrap items-end gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
             <span className="font-display text-6xl leading-none text-neon">
               {formatPrice(product.salePrice)}
             </span>
             <span className="text-lg text-white/40 line-through">{formatPrice(product.price)}</span>
-            <span className="rounded-full bg-alarm px-3 py-1 text-sm font-black text-white">
+            <span className="rounded-full bg-[var(--color-neon)] px-3 py-1 text-sm font-black text-[var(--color-bg)]">
               Vous économisez {formatPrice(product.price - product.salePrice)}
             </span>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-alarm/40 bg-alarm/10 px-4 py-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-alarm">
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[var(--color-neon)]/40 bg-[var(--color-neon)]/10 px-4 py-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-neon)]">
               ⏳ Offre se termine dans
             </span>
             <Countdown target={nextFriday2359()} />
@@ -116,7 +116,7 @@ export default function Product() {
 
           {product.options.length > 0 && (
             <div className="mt-6">
-              <h2 className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-muted">
+              <h2 className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">
                 Option
               </h2>
               <div className="flex flex-wrap gap-2">
@@ -139,7 +139,7 @@ export default function Product() {
           )}
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-1 rounded-full border border-white/15 bg-ink-800">
+            <div className="flex items-center gap-1 rounded-full border border-white/15 bg-white/10">
               <button
                 type="button"
                 aria-label="Diminuer la quantité"
@@ -172,11 +172,11 @@ export default function Product() {
             </Button>
           </div>
 
-          <p className="mt-3 text-sm text-muted">
+          <p className="mt-3 text-sm text-white/50">
             {product.stock > 10 ? (
-              <span className="text-mint">✓ En stock — expédié sous 24 h</span>
+              <span className="text-[var(--color-neon)]">✓ En stock — expédié sous 24 h</span>
             ) : (
-              <span className="text-alarm">
+              <span className="text-[var(--color-neon)]">
                 ⚠ Plus que {product.stock} en stock
               </span>
             )}
@@ -192,7 +192,7 @@ export default function Product() {
                 <Icon size={18} className="mt-0.5 shrink-0 text-neon" />
                 <div>
                   <p className="text-sm font-bold text-white">{t}</p>
-                  <p className="text-xs text-muted">{s}</p>
+                  <p className="text-xs text-white/50">{s}</p>
                 </div>
               </li>
             ))}

@@ -12,7 +12,7 @@ export default function Stars({ rating, reviews, size = 14 }) {
           />
         ))}
       </div>
-      <span className="text-xs font-semibold text-muted">
+      <span className="text-xs font-semibold text-white/50">
         {rating}
         {reviews != null && <span className="text-white/35"> ({reviews})</span>}
       </span>
