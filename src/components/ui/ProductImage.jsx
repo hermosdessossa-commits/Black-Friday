@@ -10,7 +10,24 @@ const sizeClasses = {
   xl: 'aspect-hero w-full',
 }
 
-/** Visuel produit : image réelle avec blur placeholder, fallback dégradé + emoji. */
+const fallbackGradients = [
+  'from-gray-100 to-gray-200',
+  'from-gray-200 to-gray-300',
+  'from-gray-100 to-gray-300',
+  'from-gray-50 to-gray-200',
+  'from-gray-100 to-gray-100',
+]
+
+function getFallbackGradient(id) {
+  let hash = 0
+  for (let i = 0; i < id.length; i++) {
+    hash = ((hash << 5) - hash) + id.charCodeAt(i)
+    hash |= 0
+  }
+  return fallbackGradients[Math.abs(hash) % fallbackGradients.length]
+}
+
+/** Visuel produit : image réelle avec blur placeholder, fallback dégradé gris + emoji. */
 export default function ProductImage({ product, className = '', size = 'lg', priority = false, alt }) {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
@@ -18,7 +35,7 @@ export default function ProductImage({ product, className = '', size = 'lg', pri
 
   if (hasImage && !error) {
     return (
-      <div className={`relative overflow-hidden rounded-xl ${sizeClasses[size]} ${className}`}>
+      <div className={`relative overflow-hidden rounded-lg ${sizeClasses[size]} ${className}`}>
         <img
           src={product.image}
           alt={alt ?? product.name}
@@ -28,20 +45,21 @@ export default function ProductImage({ product, className = '', size = 'lg', pri
           style={{ backgroundImage: `url(${BLUR_PLACEHOLDER})` }}
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ${loaded ? 'opacity-100' : 'opacity-0'}`}
         />
       </div>
     )
   }
 
+  const gradient = getFallbackGradient(product.id)
+
   return (
-    <div className={`relative flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${product.gradient} ${sizeClasses[size]} ${className}`}>
-      <div className="absolute inset-0 opacity-25 [background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.4)_0_2px,transparent_2px_14px)]" />
-      <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/20 blur-2xl" />
-      <span className="text-7xl drop-shadow-[0_8px_16px_rgba(0,0,0,0.45)] select-none" role="img" aria-label={product.name}>
+    <div className={`relative flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br ${gradient} ${sizeClasses[size]} ${className}`}>
+      <div className="absolute inset-0 opacity-30 [background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.03)_0_1px,transparent_1px_8px)]" />
+      <span className="text-7xl md:text-9xl select-none drop-shadow-sm" role="img" aria-label={product.name}>
         {product.emoji}
       </span>
-      <span className="absolute bottom-2 left-3 rounded bg-black/45 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur">
+      <span className="absolute bottom-2 left-3 rounded bg-black/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400 backdrop-blur-sm">
         {categoryEmoji(product.category)}
       </span>
     </div>

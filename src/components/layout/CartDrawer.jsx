@@ -21,7 +21,7 @@ export default function CartDrawer({ open, onClose }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
             aria-hidden
           />
           <motion.aside
@@ -29,43 +29,43 @@ export default function CartDrawer({ open, onClose }) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-white/10 bg-[var(--color-bg)]"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-gray-200 bg-white"
             role="dialog"
             aria-label="Panier"
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-              <h2 className="display text-2xl text-white">
-                Panier <span className="text-neon">({lines.reduce((n, l) => n + l.qty, 0)})</span>
+            <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
+              <h2 className="display-tight text-2xl text-black">
+                Panier <span className="text-black">({lines.reduce((n, l) => n + l.qty, 0)})</span>
               </h2>
               <button
                 type="button"
                 onClick={onClose}
                 aria-label="Fermer le panier"
-                className="grid h-9 w-9 cursor-pointer place-items-center rounded-full border border-white/15 hover:border-neon hover:text-neon"
+                className="grid h-9 w-9 cursor-pointer place-items-center rounded-full border border-gray-300 hover:border-gray-400 hover:bg-gray-50"
               >
-                <X size={17} />
+                <X size={17} className="text-black" />
               </button>
             </div>
 
             {lines.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
-                <div className="grid h-20 w-20 place-items-center rounded-full bg-white/5 text-white/30">
+                <div className="grid h-20 w-20 place-items-center rounded-full bg-gray-100 text-gray-400">
                   <ShoppingBag size={32} />
                 </div>
-                <p className="text-sm text-white/50">Votre panier est vide.</p>
+                <p className="text-sm text-gray-500">Votre panier est vide.</p>
                 <Link to="/boutique" onClick={onClose}>
                   <Button>Voir les deals</Button>
                 </Link>
               </div>
             ) : (
               <>
-                <ul className="flex-1 divide-y divide-white/8 overflow-y-auto px-5">
+                <ul className="flex-1 divide-y divide-gray-200 overflow-y-auto px-5">
                   {lines.map((line, idx) => (
                     <li key={`${line.id}-${line.option ?? ''}`} className="flex gap-3 py-4">
                       <Link to={`/produit/${line.id}`} onClick={onClose} className="shrink-0">
                         <ProductImage
                           product={line.product}
-                          className="rounded-xl"
+                          className="rounded-lg"
                           size="sm"
                         />
                       </Link>
@@ -73,46 +73,46 @@ export default function CartDrawer({ open, onClose }) {
                         <Link
                           to={`/produit/${line.id}`}
                           onClick={onClose}
-                          className="truncate text-sm font-bold hover:text-neon"
+                          className="truncate text-sm font-bold hover:text-gray-700"
                         >
                           {line.product.name}
                         </Link>
                         {line.option && (
-                          <span className="text-xs text-white/50">{line.option}</span>
+                          <span className="text-xs text-gray-500">{line.option}</span>
                         )}
                         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-                          <div className="flex items-center gap-1 rounded-full border border-white/15 bg-white/10">
+                          <div className="flex items-center gap-1 rounded-full border border-gray-300 bg-gray-50">
                             <button
                               type="button"
                               aria-label="Diminuer"
                               onClick={() => setQty(idx, line.qty - 1)}
-                              className="grid h-8 w-8 cursor-pointer place-items-center rounded-full hover:text-neon"
+                              className="grid h-8 w-8 cursor-pointer place-items-center rounded-full hover:text-gray-700"
                             >
-                              <Minus size={14} />
+                              <Minus size={14} className="text-black" />
                             </button>
-                            <span className="w-5 text-center text-sm font-bold tabular-nums">
+                            <span className="w-5 text-center text-sm font-bold tabular-nums text-black">
                               {line.qty}
                             </span>
                             <button
                               type="button"
                               aria-label="Augmenter"
                               onClick={() => setQty(idx, line.qty + 1)}
-                              className="grid h-8 w-8 cursor-pointer place-items-center rounded-full hover:text-neon"
+                              className="grid h-8 w-8 cursor-pointer place-items-center rounded-full hover:text-gray-700"
                             >
-                              <Plus size={14} />
+                              <Plus size={14} className="text-black" />
                             </button>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="font-display text-lg text-neon">
+                            <span className="font-display text-lg text-black">
                               {formatPrice(line.lineTotal)}
                             </span>
                             <button
                               type="button"
                               aria-label={`Retirer ${line.product.name}`}
                               onClick={() => remove(idx)}
-                              className="cursor-pointer text-white/40 hover:text-[var(--color-neon)]"
+                              className="cursor-pointer text-gray-400 hover:text-black"
                             >
-                              <Trash2 size={15} />
+                              <Trash2 size={15} className="text-gray-400" />
                             </button>
                           </div>
                         </div>
@@ -121,12 +121,12 @@ export default function CartDrawer({ open, onClose }) {
                   ))}
                 </ul>
 
-                <div className="border-t border-white/10 bg-[var(--color-bg)]/60 px-5 py-5">
-                  <div className="mb-1 flex items-center justify-between text-sm text-white/50">
+                <div className="border-t border-gray-200 bg-gray-50/50 px-5 py-5">
+                  <div className="mb-1 flex items-center justify-between text-sm text-gray-500">
                     <span>Sous-total</span>
-                    <span className="font-display text-2xl text-white">{formatPrice(subtotal)}</span>
+                    <span className="font-display text-2xl text-black">{formatPrice(subtotal)}</span>
                   </div>
-                  <p className="mb-4 text-xs text-white/40">
+                  <p className="mb-4 text-xs text-gray-400">
                     {subtotal >= 50 ? '✓ Livraison standard offerte' : `Plus que ${formatPrice(50 - subtotal)} pour la livraison offerte`}
                   </p>
                   <div className="grid gap-2">

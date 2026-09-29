@@ -18,19 +18,18 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="relative overflow-hidden border-t-2 border-[var(--color-neon)] bg-[var(--color-bg)] py-16 md:py-24">
-      <div className="absolute inset-0 opacity-10 [background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.8)_0_2px,transparent_2px_18px)]" />
+    <section className="relative overflow-hidden border-t border-gray-200 bg-white py-16 md:py-24">
       <div className="container-x relative grid items-center gap-8 md:grid-cols-2">
         <div>
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-black/40 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-neon">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
             <Zap size={13} /> -15% supplémentaires
           </span>
-          <h2 className="display text-4xl text-white md:text-6xl">
+          <h2 className="display-tight text-4xl md:text-5xl lg:text-6xl text-black">
             Recevez les deals
             <br />
-            <span className="text-neon">avant tout le monde</span>
+            <span className="text-black">avant tout le monde</span>
           </h2>
-          <p className="mt-3 max-w-md text-sm text-white/80 md:text-base">
+          <p className="mt-3 max-w-md text-sm text-gray-500 md:text-base">
             Une alerte e-mail 30 minutes avant l'ouverture de chaque vague. Zéro spam, désinscription
             en un clic.
           </p>
@@ -40,16 +39,16 @@ export default function Newsletter() {
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="rounded-3xl border border-white/20 bg-black/40 p-6 backdrop-blur md:p-8"
+          className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg md:p-8"
         >
           {sent ? (
             <div className="flex flex-col items-center gap-3 py-6 text-center">
-              <span className="grid h-16 w-16 place-items-center rounded-full bg-[var(--color-neon)] text-[var(--color-bg)]">
+              <span className="grid h-16 w-16 place-items-center rounded-full bg-black text-white">
                 <Check size={30} />
               </span>
-              <p className="display text-3xl text-white">C'est noté !</p>
-              <p className="text-sm text-white/70">
-                Votre code <strong className="text-neon">WELCOME15</strong> arrive dans votre boîte
+              <p className="display text-3xl text-black">C'est noté !</p>
+              <p className="text-sm text-gray-500">
+                Votre code <strong className="text-black">WELCOME15</strong> arrive dans votre boîte
                 mail.
               </p>
             </div>
@@ -57,7 +56,7 @@ export default function Newsletter() {
             <form onSubmit={submit} noValidate>
               <label
                 htmlFor="nl-email"
-                className="mb-2 block text-xs font-extrabold uppercase tracking-widest text-white/70"
+                className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-600"
               >
                 Votre e-mail
               </label>
@@ -65,7 +64,7 @@ export default function Newsletter() {
                 <div className="relative flex-1">
                   <Mail
                     size={17}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                     aria-hidden
                   />
                   <input
@@ -75,17 +74,17 @@ export default function Newsletter() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="vous@exemple.fr"
                     aria-invalid={!!error}
-                    className="h-13 w-full rounded-full border border-white/20 bg-black/50 py-3.5 pl-11 pr-4 text-sm text-white placeholder:text-white/40 focus:border-neon focus:outline-none"
+                    className="h-13 w-full rounded-md border border-gray-300 bg-white py-3.5 pl-11 pr-4 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="h-13 cursor-pointer rounded-full bg-neon px-7 text-sm font-black uppercase tracking-widest text-black transition-transform hover:scale-[1.03]"
+                  className="h-13 cursor-pointer rounded-md bg-black px-7 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-gray-900"
                 >
                   Je m'inscris
                 </button>
               </div>
-              <p aria-live="polite" className="mt-2 min-h-4 text-xs font-semibold text-neon">
+              <p aria-live="polite" className="mt-2 min-h-4 text-xs font-medium text-red-500">
                 {error}
               </p>
             </form>

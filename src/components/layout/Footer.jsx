@@ -35,18 +35,18 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[var(--color-bg)]">
+    <footer className="border-t border-gray-200 bg-white">
       <div className="container-x grid gap-10 py-14 md:grid-cols-[1.4fr_repeat(3,1fr)] md:py-18">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-neon font-display text-lg text-black">
+            <span className="grid h-9 w-9 place-items-center rounded-md bg-black font-display text-lg text-white">
               BF
             </span>
-            <span className="display text-xl text-white">
-              Black<span className="text-neon">Friday</span>
+            <span className="display-tight text-xl text-black">
+              Black<span className="text-black">Friday</span>
             </span>
           </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-500">
             La vente la plus attendue de l'année. Des remises réelles, un stock limité, et des
             offres qui ne reviendront pas avant l'an prochain.
           </p>
@@ -61,7 +61,7 @@ export default function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-all hover:-translate-y-0.5 hover:border-neon hover:text-neon"
+                className="grid h-10 w-10 place-items-center rounded-full border border-gray-300 text-gray-500 transition-base hover:-translate-y-0.5 hover:border-gray-400 hover:text-black"
               >
                 <Icon size={17} />
               </a>
@@ -71,7 +71,7 @@ export default function Footer() {
 
         {COLUMNS.map((col) => (
           <nav key={col.title} aria-label={col.title}>
-            <h3 className="mb-4 text-xs font-extrabold uppercase tracking-[0.2em] text-neon">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
               {col.title}
             </h3>
             <ul className="space-y-2.5">
@@ -79,7 +79,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     to={l.to}
-                    className="text-sm text-white/60 transition-colors hover:text-white"
+                    className="text-sm text-gray-500 transition-colors hover:text-black"
                   >
                     {l.label}
                   </Link>
@@ -88,10 +88,11 @@ export default function Footer() {
             </ul>
           </nav>
         ))}
+
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-x flex flex-col gap-4 py-6 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
+      <div className="border-t border-gray-200">
+        <div className="container-x flex flex-col gap-4 py-6 text-xs text-gray-400 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <span className="inline-flex items-center gap-1.5">
               <Mail size={14} /> contact@blackfriday.fr
@@ -105,13 +106,13 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <span>© {YEAR} Black Friday — Démo fictive</span>
-            <span className="rounded border border-white/15 px-2 py-1 font-bold uppercase tracking-wider text-white/60">
+            <span className="rounded border border-gray-300 px-2 py-1 font-bold uppercase tracking-wider text-gray-500">
               Visa
             </span>
-            <span className="rounded border border-white/15 px-2 py-1 font-bold uppercase tracking-wider text-white/60">
+            <span className="rounded border border-gray-300 px-2 py-1 font-bold uppercase tracking-wider text-gray-500">
               Mastercard
             </span>
-            <span className="rounded border border-white/15 px-2 py-1 font-bold uppercase tracking-wider text-white/60">
+            <span className="rounded border border-gray-300 px-2 py-1 font-bold uppercase tracking-wider text-gray-500">
               PayPal
             </span>
           </div>

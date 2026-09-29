@@ -16,7 +16,7 @@ const stats = [
 const HeroShapes = () => (
   <>
     <motion.div
-      className="absolute top-20 left-10 h-64 w-64 rounded-full bg-[var(--color-neon)]/5 blur-3xl"
+      className="absolute top-20 left-10 h-64 w-64 rounded-full bg-black/5 blur-3xl"
       initial={{ scale: 0.5, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: true, margin: '-100px' }}
@@ -24,7 +24,7 @@ const HeroShapes = () => (
       aria-hidden
     />
     <motion.div
-      className="absolute bottom-20 right-10 h-48 w-48 bg-[var(--color-neon)]/5 blur-3xl rotate-12"
+      className="absolute bottom-20 right-10 h-48 w-48 bg-black/5 blur-3xl rotate-12"
       style={{ clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)' }}
       initial={{ scale: 0.5, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
@@ -33,7 +33,7 @@ const HeroShapes = () => (
       aria-hidden
     />
     <motion.div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 bg-[var(--color-neon)]/3 blur-3xl"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 bg-black/3 blur-3xl"
       initial={{ scale: 0.8, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: true, margin: '-100px' }}
@@ -45,7 +45,8 @@ const HeroShapes = () => (
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-white/10 hero-pattern">
+    <section className="relative overflow-hidden border-b border-gray-200">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(0,0,0,0.05)_0%,transparent_70%)]" />
       <HeroShapes />
 
       <div className="container-x relative grid gap-10 py-14 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
@@ -54,7 +55,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-neon)]/50 bg-[var(--color-neon)]/15 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600"
           >
             <Flame size={14} className="animate-pulse" />
             Édition limitée — stock qui fond
@@ -62,7 +63,7 @@ export default function Hero() {
 
           <h1
             aria-label="Black Friday"
-            className="display text-[17vw] leading-[0.82] text-white sm:text-[13vw] lg:text-[8.5rem]"
+            className="display-tight text-[17vw] leading-[0.82] text-black sm:text-[13vw] lg:text-[8.5rem]"
           >
             {TITLE.map((word, wi) => (
               <span key={word} className="block overflow-hidden">
@@ -72,7 +73,7 @@ export default function Hero() {
                     initial={{ y: '110%', opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.1 + wi * 0.18 + i * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className={`inline-block ${wi === 1 ? 'text-[var(--color-neon)]' : ''} ${
+                    className={`inline-block ${wi === 1 ? 'text-black' : ''} ${
                       wi === 1 && i === 0 ? 'animate-pulse' : ''
                     }`}
                   >
@@ -87,10 +88,10 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="mt-6 max-w-lg text-base leading-relaxed text-white/80 md:text-lg"
+            className="mt-6 max-w-lg text-base leading-relaxed text-gray-600 md:text-lg"
           >
             Une seule journée. Des remises jusqu'à{' '}
-            <strong className="text-[var(--color-neon)]">-70%</strong> sur la tech, la mode et la maison.
+            <strong className="text-black">-70%</strong> sur la tech, la mode et la maison.
             Quand c'est parti, c'est parti.
           </motion.p>
 
@@ -101,13 +102,13 @@ export default function Hero() {
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <Link to="/boutique">
-              <Button size="lg" className="group">
+              <Button size="lg">
                 <Sparkles size={17} /> Voir les deals <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <Link
               to="/boutique?deals=1"
-              className="inline-flex h-14 items-center rounded-full border border-white/25 px-8 text-sm font-black uppercase tracking-widest text-white transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]"
+              className="inline-flex h-13 items-center rounded-md border border-gray-300 px-8 text-sm font-semibold uppercase tracking-wider text-black transition-colors hover:bg-gray-50 hover:border-gray-400"
             >
               Deals du moment
             </Link>
@@ -117,12 +118,12 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/10 pt-6"
+            className="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-gray-200 pt-6"
           >
             {stats.map((s) => (
               <div key={s.label}>
-                <dt className="order-2 text-xs uppercase tracking-wider text-white/50">{s.label}</dt>
-                <dd className="font-display text-3xl text-[var(--color-neon)]">{s.value}</dd>
+                <dt className="order-2 text-xs uppercase tracking-wider text-gray-500">{s.label}</dt>
+                <dd className="font-display text-3xl md:text-4xl text-black">{s.value}</dd>
               </div>
             ))}
           </motion.dl>
@@ -133,31 +134,31 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94, rotate: -2 }}
           animate={{ opacity: 1, scale: 1, rotate: -1.5 }}
           transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
-          className="relative rounded-3xl border border-[var(--color-neon)]/20 bg-[var(--color-bg)] p-6 shadow-glow md:p-8"
+          className="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-lg md:p-8"
         >
-          <div className="absolute -right-3 -top-4 rotate-6 rounded-full bg-[var(--color-neon)] px-4 py-2 font-display text-xl text-[var(--color-bg)] shadow-lg">
+          <div className="absolute -right-3 -top-4 rotate-6 rounded-full bg-black px-4 py-2 font-display text-xl text-white shadow-md">
             -70%
           </div>
-          <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-white/50">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
             La vente se termine dans
           </p>
           <Countdown target={nextFriday2359()} big className="mt-4 justify-center" />
 
-          <div className="mt-6 space-y-3 border-t border-white/10 pt-5">
+          <div className="mt-6 space-y-3 border-t border-gray-200 pt-5">
             {[
               ['Livraison offerte', 'dès 50 €'],
               ['Paiement 3x', 'sans frais'],
               ['Retours', '30 jours'],
             ].map(([a, b]) => (
               <div key={a} className="flex items-center justify-between text-sm">
-                <span className="text-white/70">{a}</span>
-                <span className="font-bold text-[var(--color-neon)]">{b}</span>
+                <span className="text-gray-600">{a}</span>
+                <span className="font-bold text-black">{b}</span>
               </div>
             ))}
           </div>
 
           <Link to="/boutique" className="mt-6 block">
-            <Button size="lg" full className="bg-white text-[var(--color-bg)] hover:bg-[var(--color-neon)]">
+            <Button size="lg" full>
               J'en profite
             </Button>
           </Link>

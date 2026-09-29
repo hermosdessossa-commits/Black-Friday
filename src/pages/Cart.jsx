@@ -39,11 +39,11 @@ export default function Cart() {
   if (lines.length === 0) {
     return (
       <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-5 py-16 text-center">
-        <div className="grid h-24 w-24 place-items-center rounded-full bg-white/5 text-white/25">
+        <div className="grid h-24 w-24 place-items-center rounded-full bg-gray-100 text-gray-300">
           <ShoppingBag size={40} />
         </div>
-        <h1 className="display text-4xl text-white md:text-6xl">Panier vide</h1>
-        <p className="max-w-sm text-sm text-white/50">
+        <h1 className="display-tight text-4xl md:text-6xl text-black">Panier vide</h1>
+        <p className="max-w-sm text-sm text-gray-500">
           Les meilleures affaires partent en quelques heures. Ne restez pas sur la touche.
         </p>
         <Link to="/boutique">
@@ -57,8 +57,8 @@ export default function Cart() {
 
   return (
     <div className="container-x py-10 md:py-14">
-      <h1 className="display mb-8 text-5xl text-white md:text-7xl">
-        Votre <span className="text-neon">panier</span>
+      <h1 className="display-tight mb-8 text-5xl md:text-6xl lg:text-7xl text-black">
+        Votre <span className="text-black">panier</span>
       </h1>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
@@ -70,10 +70,10 @@ export default function Cart() {
               layout
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"
+              className="flex gap-4 rounded-xl border border-gray-200 bg-white p-4"
             >
               <Link to={`/produit/${line.id}`} className="shrink-0">
-                <ProductImage product={line.product} className="rounded-xl" size="sm" />
+                <ProductImage product={line.product} className="rounded-lg" size="sm" />
               </Link>
 
               <div className="flex min-w-0 flex-1 flex-col">
@@ -81,11 +81,11 @@ export default function Cart() {
                   <div className="min-w-0">
                     <Link
                       to={`/produit/${line.id}`}
-                      className="block truncate text-sm font-bold hover:text-neon md:text-base"
+                      className="block truncate text-sm font-bold hover:text-gray-700 md:text-base"
                     >
                       {line.product.name}
                     </Link>
-                    <p className="text-xs text-white/50">
+                    <p className="text-xs text-gray-500">
                       {line.product.brand}
                       {line.option ? ` · ${line.option}` : ''}
                     </p>
@@ -94,38 +94,40 @@ export default function Cart() {
                     type="button"
                     onClick={() => remove(idx)}
                     aria-label={`Retirer ${line.product.name}`}
-                    className="cursor-pointer text-white/40 transition-colors hover:text-[var(--color-neon)]"
+                    className="cursor-pointer text-gray-400 transition-colors hover:text-black"
                   >
-                    <Trash2 size={17} />
+                    <Trash2 size={17} className="text-gray-400" />
                   </button>
                 </div>
 
                 <div className="mt-auto flex items-center justify-between gap-3 pt-3">
-                  <div className="flex items-center gap-1 rounded-full border border-white/15 bg-white/10">
+                  <div className="flex items-center gap-1 rounded-full border border-gray-300 bg-gray-50">
                     <button
                       type="button"
                       aria-label="Diminuer"
                       onClick={() => setQty(idx, line.qty - 1)}
-                      className="grid h-9 w-9 cursor-pointer place-items-center rounded-full hover:text-neon"
+                      className="grid h-9 w-9 cursor-pointer place-items-center rounded-full hover:text-gray-700"
                     >
-                      <Minus size={15} />
+                      <Minus size={15} className="text-black" />
                     </button>
-                    <span className="w-6 text-center text-sm font-bold tabular-nums">{line.qty}</span>
+                    <span className="w-6 text-center text-sm font-bold tabular-nums text-black">
+                      {line.qty}
+                    </span>
                     <button
                       type="button"
                       aria-label="Augmenter"
                       onClick={() => setQty(idx, line.qty + 1)}
-                      className="grid h-9 w-9 cursor-pointer place-items-center rounded-full hover:text-neon"
+                      className="grid h-9 w-9 cursor-pointer place-items-center rounded-full hover:text-gray-700"
                     >
-                      <Plus size={15} />
+                      <Plus size={15} className="text-black" />
                     </button>
                   </div>
 
                   <div className="text-right">
-                    <span className="block text-xs text-white/40 line-through">
+                    <span className="block text-xs text-gray-400 line-through">
                       {formatPrice(line.product.price * line.qty)}
                     </span>
-                    <span className="font-display text-2xl text-neon">
+                    <span className="font-display text-2xl text-black">
                       {formatPrice(line.lineTotal)}
                     </span>
                   </div>
@@ -137,8 +139,8 @@ export default function Cart() {
 
         {/* Résumé */}
         <aside className="lg:sticky lg:top-28 lg:self-start">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h2 className="display mb-5 text-2xl text-white">Récapitulatif</h2>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 className="display-tight mb-5 text-2xl text-black">Récapitulatif</h2>
 
             <form onSubmit={applyPromo} className="mb-5 flex gap-2">
               <input
@@ -146,45 +148,45 @@ export default function Cart() {
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="Code promo"
                 aria-label="Code promo"
-                className="h-11 min-w-0 flex-1 rounded-xl border border-white/10 bg-white/10 px-4 text-sm uppercase text-white placeholder:normal-case placeholder:text-white/35 focus:border-[var(--color-neon)] focus:outline-none"
+                className="h-11 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-sm uppercase text-black placeholder:normal-case placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
               />
               <button
                 type="submit"
-                className="grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-xl bg-neon text-black transition-transform hover:scale-105"
+                className="grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-xl bg-black text-white transition-transform hover:scale-105 hover:bg-gray-900"
                 aria-label="Appliquer le code promo"
               >
-                <Tag size={17} />
+                <Tag size={17} className="text-white" />
               </button>
             </form>
-            <p aria-live="polite" className="-mt-3 mb-4 min-h-4 text-xs font-semibold text-[var(--color-neon)]">
+            <p aria-live="polite" className="-mt-3 mb-4 min-h-4 text-xs font-semibold text-red-500">
               {error}
             </p>
             {promoCode && (
-              <p className="-mt-3 mb-4 text-xs font-semibold text-[var(--color-neon)]">
+              <p className="-mt-3 mb-4 text-xs font-semibold text-black">
                 ✓ Code {promoCode} appliqué ({PROMO_CODES[promoCode].label})
               </p>
             )}
 
-            <dl className="space-y-3 border-t border-white/10 pt-4 text-sm">
+            <dl className="space-y-3 border-t border-gray-200 pt-4 text-sm">
               <div className="flex justify-between">
-                <dt className="text-white/50">Sous-total</dt>
-                <dd className="font-semibold">{formatPrice(subtotal)}</dd>
+                <dt className="text-gray-500">Sous-total</dt>
+                <dd className="font-semibold text-black">{formatPrice(subtotal)}</dd>
               </div>
               {discountAmount > 0 && (
-                <div className="flex justify-between text-[var(--color-neon)]">
+                <div className="flex justify-between text-black">
                   <dt>Réduction {promoCode}</dt>
                   <dd>−{formatPrice(discountAmount)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
-                <dt className="text-white/50">Livraison</dt>
-                <dd className="font-semibold">
-                  {shipping === 0 ? <span className="text-[var(--color-neon)]">Offerte</span> : formatPrice(shipping)}
+                <dt className="text-gray-500">Livraison</dt>
+                <dd className="font-semibold text-black">
+                  {shipping === 0 ? <span className="text-black">Offerte</span> : formatPrice(shipping)}
                 </dd>
               </div>
-              <div className="flex items-end justify-between border-t border-white/10 pt-4">
-                <dt className="text-sm font-bold uppercase tracking-wider text-white">Total</dt>
-                <dd className="font-display text-3xl text-neon">{formatPrice(total)}</dd>
+              <div className="flex items-end justify-between border-t border-gray-200 pt-4">
+                <dt className="text-sm font-bold uppercase tracking-wider text-black">Total</dt>
+                <dd className="font-display text-3xl text-black">{formatPrice(total)}</dd>
               </div>
             </dl>
 
@@ -197,13 +199,13 @@ export default function Cart() {
               Passer commande <ArrowRight size={17} />
             </Button>
 
-            <p className="mt-3 text-center text-xs text-white/40">
+            <p className="mt-3 text-center text-xs text-gray-400">
               Paiement sécurisé · CB, 3x sans frais, PayPal
             </p>
 
             <Link
               to="/boutique"
-              className="mt-4 block text-center text-xs font-bold uppercase tracking-widest text-white/50 hover:text-neon"
+              className="mt-4 block text-center text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black"
             >
               Continuer mes achats
             </Link>

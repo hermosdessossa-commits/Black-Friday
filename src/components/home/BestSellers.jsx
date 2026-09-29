@@ -9,7 +9,7 @@ export default function BestSellers() {
         kicker="Les plus demandés"
         title={
           <>
-            Top ventes <span className="text-neon">-70%</span>
+            Top ventes <span className="text-black">-70%</span>
           </>
         }
         subtitle="Les produits que tout le monde va ajouter au panier avant vous."

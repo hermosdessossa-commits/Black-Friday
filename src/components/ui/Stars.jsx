@@ -8,13 +8,13 @@ export default function Stars({ rating, reviews, size = 14 }) {
           <Star
             key={i}
             size={size}
-            className={i < Math.round(rating) ? 'fill-neon text-neon' : 'text-white/25'}
+            className={i < Math.round(rating) ? 'fill-black text-black' : 'text-gray-300'}
           />
         ))}
       </div>
-      <span className="text-xs font-semibold text-white/50">
+      <span className="text-xs font-semibold text-gray-600">
         {rating}
-        {reviews != null && <span className="text-white/35"> ({reviews})</span>}
+        {reviews != null && <span className="text-gray-400"> ({reviews})</span>}
       </span>
     </div>
   )

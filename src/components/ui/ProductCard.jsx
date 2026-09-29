@@ -31,37 +31,37 @@ export default function ProductCard({ product, index = 0 }) {
     >
       <Link
         to={`/produit/${product.id}`}
-        className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-white/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-neon)]/50 hover:shadow-[0_24px_50px_-30px_rgba(255,230,0,0.6)]"
+        className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-base hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg"
       >
         <div className="relative">
-          <ProductImage product={product} size="sm" className="transition-transform duration-500 group-hover:scale-105" />
+          <ProductImage product={product} size="sm" className="transition-transform duration-500 group-hover:scale-[1.02]" />
           <div className="absolute left-3 top-3 flex flex-col gap-1.5">
-            {off > 0 && <Badge tone="red">-{off}%</Badge>}
-            {product.flash && <Badge tone="neon">⚡ Flash</Badge>}
+            {off > 0 && <Badge tone="default">-{off}%</Badge>}
+            {product.flash && <Badge tone="secondary">⚡ Flash</Badge>}
           </div>
           {product.stock <= 10 && (
-            <span className="absolute bottom-3 right-3 rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-neon backdrop-blur">
+            <span className="absolute bottom-3 right-3 rounded-full bg-black px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
               Plus que {product.stock}
             </span>
           )}
         </div>
 
-        <div className="flex flex-1 flex-col gap-2 p-4">
+        <div className="flex flex-1 flex-col gap-2 p-5">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-white/50">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
               {product.brand}
             </span>
             <Stars rating={product.rating} />
           </div>
 
-          <h3 className="text-sm font-bold leading-snug text-white transition-colors group-hover:text-neon">
+          <h3 className="text-sm font-bold leading-snug text-black group-hover:text-gray-700 transition-colors">
             {product.name}
           </h3>
 
           <div className="mt-auto flex items-end justify-between gap-2 pt-2">
             <div className="flex flex-col">
-              <span className="text-xs text-white/40 line-through">{formatPrice(product.price)}</span>
-              <span className="font-display text-2xl leading-none text-neon">
+              <span className="text-xs text-gray-400 line-through">{formatPrice(product.price)}</span>
+              <span className="font-display text-2xl leading-none text-black">
                 {formatPrice(product.salePrice)}
               </span>
             </div>
@@ -69,10 +69,10 @@ export default function ProductCard({ product, index = 0 }) {
               type="button"
               onClick={quickAdd}
               aria-label={`Ajouter ${product.name} au panier`}
-              className={`grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-full transition-all ${
+              className={`grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-full transition-base ${
                 added
-                  ? 'bg-[var(--color-neon)] text-[var(--color-bg)]'
-                  : 'bg-white/10 text-white hover:scale-110 hover:bg-[var(--color-neon)] hover:text-[var(--color-bg)]'
+                  ? 'bg-black text-white'
+                  : 'bg-gray-100 text-black hover:scale-110 hover:bg-black hover:text-white'
               }`}
             >
               {added ? <Check size={18} /> : <Plus size={18} />}

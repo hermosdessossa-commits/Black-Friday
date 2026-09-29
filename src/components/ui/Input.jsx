@@ -1,32 +1,30 @@
 import { useId } from 'react'
 
-/** Champ de formulaire avec label + erreur accessible (aria-live). */
 export default function Input({ label, error, hint, className = '', id: providedId, ...props }) {
   const autoId = useId()
   const id = providedId ?? autoId
   const errId = `${id}-err`
+  const hintId = `${id}-hint`
 
   return (
     <div className={className}>
-      <label
-        htmlFor={id}
-        className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/50"
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={id}
+          className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-600"
+        >
+          {label}
+        </label>
+      )}
       <input
         id={id}
         aria-invalid={!!error}
-        aria-describedby={error ? errId : undefined}
-        className={`h-12 w-full rounded-xl border bg-white/10 px-4 text-sm text-white placeholder:text-white/30 transition-colors focus:border-[var(--color-neon)] focus:outline-none ${
-          error ? 'border-[var(--color-neon)]' : 'border-white/10 hover:border-white/25'
-        }`}
+        aria-describedby={error ? errId : hint ? hintId : undefined}
+        className={`w-full h-12 rounded-md border bg-white px-4 text-sm text-black placeholder:text-gray-400 transition-quick focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'}`}
         {...props}
       />
-      {hint && !error && <p className="mt-1 text-xs text-white/40">{hint}</p>}
-      <p id={errId} aria-live="polite" className="mt-1 min-h-4 text-xs font-semibold text-[var(--color-neon)]">
-        {error}
-      </p>
+      {hint && !error && <p id={hintId} className="mt-1.5 text-xs text-gray-500">{hint}</p>}
+      {error && <p id={errId} aria-live="polite" className="mt-1.5 text-xs font-medium text-red-500">{error}</p>}
     </div>
   )
 }

@@ -10,25 +10,25 @@ export default function FlashDeals() {
   const target = nextFriday2359()
 
   return (
-    <section id="flash" className="relative overflow-hidden bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)] to-[var(--color-bg)] py-16 md:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,230,0,0.08),transparent_60%)]" />
+    <section id="flash" className="relative overflow-hidden bg-white py-16 md:py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.03),transparent_60%)]" />
 
       <div className="container-x relative">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--color-neon)]/50 bg-[var(--color-neon)]/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
               <Flame size={13} className="animate-pulse" /> Flash deals
             </span>
-            <h2 className="display text-4xl text-white md:text-6xl">
-              Ça part <span className="text-[var(--color-neon)]">vite</span>
+            <h2 className="display-tight text-4xl md:text-5xl lg:text-6xl text-black">
+              Ça part <span className="text-black">vite</span>
             </h2>
-            <p className="mt-2 text-sm text-white/50 md:text-base">
+            <p className="mt-2 text-sm text-gray-500 md:text-base">
               {FLASH_DEALS.length} offres à durée limitée — jusqu'à épuisement du stock.
             </p>
           </div>
 
           <div className="flex flex-col items-start gap-2 md:items-end">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
               Fin de l'offre dans
             </span>
             <Countdown target={target} />
@@ -51,7 +51,7 @@ export default function FlashDeals() {
         >
           <Link
             to="/boutique?deals=1"
-            className="group inline-flex items-center gap-2 rounded-full border border-neon/50 px-7 py-3 text-xs font-black uppercase tracking-widest text-neon transition-all hover:bg-neon hover:text-black"
+            className="group inline-flex items-center gap-2 rounded-md border border-gray-300 px-7 py-3 text-xs font-semibold uppercase tracking-wider text-gray-600 transition-colors hover:bg-gray-50 hover:border-gray-400"
           >
             Tous les deals
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

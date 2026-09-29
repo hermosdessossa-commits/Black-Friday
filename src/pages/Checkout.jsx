@@ -83,8 +83,8 @@ function ShippingStep({ form, update, shippingId, setShipping, onNext }) {
         if (valid) onNext()
       }}
     >
-      <h2 className="display mb-1 text-3xl text-white">Livraison</h2>
-      <p className="mb-5 text-sm text-white/50">Commandez en tant qu'invité — aucun compte requis.</p>
+      <h2 className="display-tight mb-1 text-3xl text-black">Livraison</h2>
+      <p className="mb-5 text-sm text-gray-500">Commandez en tant qu'invité — aucun compte requis.</p>
 
       <Input
         label="E-mail"
@@ -159,17 +159,17 @@ function ShippingStep({ form, update, shippingId, setShipping, onNext }) {
       </div>
 
       <fieldset className="mt-6">
-        <legend className="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-neon">
+        <legend className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
           Mode de livraison
         </legend>
         <div className="grid gap-3 sm:grid-cols-2">
           {Object.values(SHIPPING).map((s) => (
             <label
               key={s.id}
-              className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-all ${
+              className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-base ${
                 shippingId === s.id
-                  ? 'border-neon bg-neon/10 shadow-[0_0_24px_-12px_rgba(255,230,0,0.8)]'
-                  : 'border-white/12 hover:border-white/30'
+                  ? 'border-black bg-gray-50 shadow-md'
+                  : 'border-gray-300 hover:border-gray-400'
               }`}
             >
               <input
@@ -178,19 +178,19 @@ function ShippingStep({ form, update, shippingId, setShipping, onNext }) {
                 value={s.id}
                 checked={shippingId === s.id}
                 onChange={() => setShipping(s.id)}
-                className="mt-1 accent-[#FFE600]"
+                className="mt-1 accent-black"
               />
               <span className="flex-1">
-                <span className="block text-sm font-bold text-white">{s.label}</span>
-                <span className="block text-xs text-white/50">{s.delay}</span>
+                <span className="block text-sm font-bold text-black">{s.label}</span>
+                <span className="block text-xs text-gray-500">{s.delay}</span>
               </span>
-              <span className="font-display text-lg text-neon">
+              <span className="font-display text-lg text-black">
                 {s.freeFrom ? 'Offerte*' : formatPrice(s.price)}
               </span>
             </label>
           ))}
         </div>
-        <p className="mt-2 text-xs text-white/40">*Offerte dès 50 € d'achat.</p>
+        <p className="mt-2 text-xs text-gray-400">*Offerte dès 50 € d'achat.</p>
       </fieldset>
 
       <Button type="submit" size="lg" full className="mt-6">
@@ -228,11 +228,11 @@ function PaymentStep({ paymentMethod, setPayment, card, setCard, subtotal, onBac
       }}
     >
       <div className="mb-5 flex items-center justify-between">
-        <h2 className="display text-3xl text-white">Paiement</h2>
+        <h2 className="display-tight text-3xl text-black">Paiement</h2>
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex cursor-pointer items-center gap-1 text-xs font-bold uppercase tracking-widest text-white/50 hover:text-neon"
+          className="inline-flex cursor-pointer items-center gap-1 text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black"
         >
           <ArrowLeft size={14} /> Livraison
         </button>
@@ -240,8 +240,8 @@ function PaymentStep({ paymentMethod, setPayment, card, setCard, subtotal, onBac
 
       <div className="mb-6 grid gap-3 sm:grid-cols-2">
         <label
-          className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
-            paymentMethod === 'card' ? 'border-neon bg-neon/10' : 'border-white/12 hover:border-white/30'
+          className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-base ${
+            paymentMethod === 'card' ? 'border-black bg-gray-50 shadow-md' : 'border-gray-300 hover:border-gray-400'
           }`}
         >
           <input
@@ -249,20 +249,20 @@ function PaymentStep({ paymentMethod, setPayment, card, setCard, subtotal, onBac
             name="payment"
             checked={paymentMethod === 'card'}
             onChange={() => setPayment('card')}
-            className="accent-[#FFE600]"
+            className="accent-black"
           />
-          <CreditCard size={20} className="text-neon" />
+          <CreditCard size={20} className="text-black" />
           <span>
             <span className="block text-sm font-bold">Carte bancaire</span>
-            <span className="block text-xs text-white/50">Visa, Mastercard, Amex</span>
+            <span className="block text-xs text-gray-500">Visa, Mastercard, Amex</span>
           </span>
         </label>
 
         <label
-          className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
+          className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-base ${
             paymentMethod === 'installments'
-              ? 'border-neon bg-neon/10'
-              : 'border-white/12 hover:border-white/30'
+              ? 'border-black bg-gray-50 shadow-md'
+              : 'border-gray-300 hover:border-gray-400'
           }`}
         >
           <input
@@ -270,40 +270,40 @@ function PaymentStep({ paymentMethod, setPayment, card, setCard, subtotal, onBac
             name="payment"
             checked={paymentMethod === 'installments'}
             onChange={() => setPayment('installments')}
-            className="accent-[#FFE600]"
+            className="accent-black"
           />
-          <Smartphone size={20} className="text-neon" />
+          <Smartphone size={20} className="text-black" />
           <span>
             <span className="block text-sm font-bold">3x sans frais</span>
-            <span className="block text-xs text-white/50">3 × {formatPrice(installments[0])}</span>
+            <span className="block text-xs text-gray-500">3 × {formatPrice(installments[0])}</span>
           </span>
         </label>
       </div>
 
       {paymentMethod === 'installments' && (
-        <div className="mb-6 rounded-xl border border-white/12 bg-white/5 p-4">
-          <p className="mb-3 text-xs font-extrabold uppercase tracking-widest text-neon">
+        <div className="mb-6 rounded-xl border border-gray-300 bg-gray-50 p-4">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-600">
             Échéancier
           </p>
           <ul className="space-y-2">
             {installments.map((amt, i) => (
               <li key={i} className="flex items-center justify-between text-sm">
-                <span className="text-white/50">
+                <span className="text-gray-500">
                   {i === 0 ? "Aujourd'hui" : `Dans ${i} mois`}
                 </span>
-                <span className="font-bold text-white">{formatPrice(amt)}</span>
+                <span className="font-bold text-black">{formatPrice(amt)}</span>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      <div className="rounded-2xl border border-white/12 bg-white/5 p-5">
+      <div className="rounded-xl border border-gray-300 bg-gray-50 p-5">
         <div className="mb-4 flex items-center justify-between">
-          <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
             Carte bancaire
           </span>
-          <span className="flex items-center gap-2 text-xs text-white/45">
+          <span className="flex items-center gap-2 text-xs text-gray-400">
             <Lock size={13} /> Démonstration — aucune donnée transmise
           </span>
         </div>
@@ -320,7 +320,7 @@ function PaymentStep({ paymentMethod, setPayment, card, setCard, subtotal, onBac
             hint="Essayez 4242 4242 4242 4242"
           />
           {brand && (
-            <span className="absolute right-3 top-[34px] rounded-md bg-white/10 px-2 py-1 text-[10px] font-black uppercase text-neon">
+            <span className="absolute right-3 top-[34px] rounded-md bg-gray-100 px-2 py-1 text-[10px] font-black uppercase text-black">
               {brand}
             </span>
           )}
@@ -391,104 +391,104 @@ function RecapStep({
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
-        <h2 className="display text-3xl text-white">Récapitulatif</h2>
+        <h2 className="display-tight text-3xl text-black">Récapitulatif</h2>
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex cursor-pointer items-center gap-1 text-xs font-bold uppercase tracking-widest text-white/50 hover:text-neon"
+          className="inline-flex cursor-pointer items-center gap-1 text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black"
         >
           <ArrowLeft size={14} /> Paiement
         </button>
       </div>
 
       <div className="space-y-4">
-        <section className="rounded-2xl border border-white/12 bg-white/5 p-5">
-          <h3 className="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]">
+        <section className="rounded-xl border border-gray-300 bg-gray-50 p-5">
+          <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
             Articles ({lines.reduce((n, l) => n + l.qty, 0)})
           </h3>
           <ul className="space-y-3">
             {lines.map((l) => (
               <li key={`${l.id}-${l.option ?? ''}`} className="flex items-center gap-3">
-                <ProductImage product={l.product} className="h-12 w-12 rounded-lg" size="text-xl" />
+                <ProductImage product={l.product} className="h-12 w-12 rounded-lg" size="sm" />
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold">{l.product.name}</p>
-                  <p className="text-xs text-white/50">
+                  <p className="truncate text-sm font-semibold text-black">{l.product.name}</p>
+                  <p className="text-xs text-gray-500">
                     Qté {l.qty}
                     {l.option ? ` · ${l.option}` : ''}
                   </p>
                 </div>
-                <span className="text-sm font-bold">{formatPrice(l.lineTotal)}</span>
+                <span className="text-sm font-bold text-black">{formatPrice(l.lineTotal)}</span>
               </li>
             ))}
           </ul>
         </section>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <section className="rounded-2xl border border-white/12 bg-white/5 p-5">
-            <h3 className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]">
+          <section className="rounded-xl border border-gray-300 bg-gray-50 p-5">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
               Livraison
             </h3>
-            <p className="text-sm font-bold text-white">
+            <p className="text-sm font-bold text-black">
               {form.firstName} {form.lastName}
             </p>
-            <p className="text-sm text-white/50">
+            <p className="text-sm text-gray-500">
               {form.address}
               {form.complement ? `, ${form.complement}` : ''}
             </p>
-            <p className="text-sm text-white/50">
+            <p className="text-sm text-gray-500">
               {form.zip} {form.city}
             </p>
-            <p className="mt-2 text-xs text-white/50">
+            <p className="mt-2 text-xs text-gray-500">
               {shippingInfo.label} · {shippingInfo.delay}
             </p>
           </section>
 
-          <section className="rounded-2xl border border-white/12 bg-white/5 p-5">
-            <h3 className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-neon)]">
+          <section className="rounded-xl border border-gray-300 bg-gray-50 p-5">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">
               Paiement
             </h3>
-            <p className="flex items-center gap-2 text-sm font-bold text-white">
-              <CreditCard size={16} className="text-neon" />
+            <p className="flex items-center gap-2 text-sm font-bold text-black">
+              <CreditCard size={16} className="text-black" />
               {paymentMethod === 'card'
                 ? `Carte •••• ${last4 || '••••'}`
                 : `3x sans frais — ${formatPrice(total / 3)}/mois`}
             </p>
-            <p className="mt-1 text-xs text-white/50">{form.email}</p>
+            <p className="mt-1 text-xs text-gray-500">{form.email}</p>
           </section>
         </div>
 
-        <section className="rounded-2xl border border-neon/30 bg-neon/5 p-5">
+        <section className="rounded-xl border border-gray-300 bg-gray-50 p-5">
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <dt className="text-white/50">Sous-total</dt>
-              <dd>{formatPrice(subtotal)}</dd>
+              <dt className="text-gray-500">Sous-total</dt>
+              <dd className="text-black">{formatPrice(subtotal)}</dd>
             </div>
             {discountAmount > 0 && (
-              <div className="flex justify-between text-[var(--color-neon)]">
+              <div className="flex justify-between text-black">
                 <dt>Réduction {promoCode}</dt>
                 <dd>−{formatPrice(discountAmount)}</dd>
               </div>
             )}
             <div className="flex justify-between">
-              <dt className="text-white/50">Livraison</dt>
-              <dd>{shipping === 0 ? <span className="text-[var(--color-neon)]">Offerte</span> : formatPrice(shipping)}</dd>
+              <dt className="text-gray-500">Livraison</dt>
+              <dd className="text-black">{shipping === 0 ? <span className="text-black">Offerte</span> : formatPrice(shipping)}</dd>
             </div>
-            <div className="flex items-end justify-between border-t border-white/15 pt-3">
-              <dt className="font-bold uppercase tracking-wider">Total TTC</dt>
-              <dd className="font-display text-4xl text-neon">{formatPrice(total)}</dd>
+            <div className="flex items-end justify-between border-t border-gray-300 pt-3">
+              <dt className="font-bold uppercase tracking-wider text-black">Total TTC</dt>
+              <dd className="font-display text-4xl text-black">{formatPrice(total)}</dd>
             </div>
           </dl>
         </section>
 
-        <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/12 bg-white/5 p-4 text-sm">
+        <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-gray-300 bg-gray-50 p-4 text-sm">
           <input
             type="checkbox"
             checked={cgv}
             onChange={(e) => setCgv(e.target.checked)}
-            className="mt-0.5 accent-[#FFE600]"
+            className="mt-0.5 accent-black"
           />
-          <span className="text-white/70">
-            J'accepte les <span className="text-neon">CGV</span> et la politique de confidentialité.
+          <span className="text-gray-600">
+            J'accepte les <span className="text-black font-semibold">CGV</span> et la politique de confidentialité.
             Je reconnais que cette boutique est une démonstration : aucun paiement réel n'est
             effectué.
           </span>
@@ -497,7 +497,7 @@ function RecapStep({
         <Button size="lg" full disabled={!cgv} loading={paying} onClick={onPay}>
           {!paying && (
             <>
-              <ShieldCheck size={18} />
+              <ShieldCheck size={18} className="text-white" />
             </>
           )}
           {paying ? 'Traitement sécurisé…' : `Payer ${formatPrice(total)}`}
@@ -541,8 +541,8 @@ export default function Checkout() {
   if (lines.length === 0 && !paying) {
     return (
       <div className="container-x flex min-h-[50vh] flex-col items-center justify-center gap-4 py-16 text-center">
-        <h1 className="display text-4xl md:text-6xl">Panier vide</h1>
-        <p className="text-sm text-white/50">Ajoutez des articles avant de passer commande.</p>
+        <h1 className="display-tight text-4xl md:text-6xl text-black">Panier vide</h1>
+        <p className="text-sm text-gray-500">Ajoutez des articles avant de passer commande.</p>
         <Link to="/boutique">
           <Button>Voir les deals</Button>
         </Link>
@@ -603,7 +603,7 @@ export default function Checkout() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-7"
+            className="rounded-xl border border-gray-300 bg-white p-5 md:p-7 shadow-sm"
           >
             {step === 1 && (
               <ShippingStep
@@ -648,8 +648,8 @@ export default function Checkout() {
 
           {/* Colonne récap sticky */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <h2 className="display mb-4 text-xl text-white">Votre commande</h2>
+            <div className="rounded-xl border border-gray-300 bg-white p-5 shadow-sm">
+              <h2 className="display-tight mb-4 text-xl text-black">Votre commande</h2>
               <ul className="mb-4 max-h-64 space-y-3 overflow-y-auto pr-1">
                 {lines.map((l) => (
                   <li key={`${l.id}-${l.option ?? ''}`} className="flex items-center gap-3">
@@ -659,43 +659,43 @@ export default function Checkout() {
                         className="rounded-lg"
                         size="sm"
                       />
-                      <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-neon px-1 text-[10px] font-black text-black">
+                      <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-black px-1 text-[10px] font-black text-white">
                         {l.qty}
                       </span>
                     </div>
-                    <span className="min-w-0 flex-1 truncate text-xs font-semibold text-white/80">
+                    <span className="min-w-0 flex-1 truncate text-xs font-semibold text-gray-700">
                       {l.product.name}
                     </span>
-                    <span className="text-xs font-bold text-neon">
+                    <span className="text-xs font-bold text-black">
                       {formatPrice(l.lineTotal)}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <dl className="space-y-2 border-t border-white/10 pt-4 text-sm">
+              <dl className="space-y-2 border-t border-gray-200 pt-4 text-sm">
                 <div className="flex justify-between">
-                  <dt className="text-white/50">Sous-total</dt>
-                  <dd>{formatPrice(subtotal)}</dd>
+                  <dt className="text-gray-500">Sous-total</dt>
+                  <dd className="text-black">{formatPrice(subtotal)}</dd>
                 </div>
                 {discountAmount > 0 && (
-                  <div className="flex justify-between text-[var(--color-neon)]">
+                  <div className="flex justify-between text-black">
                     <dt>Réduction</dt>
                     <dd>−{formatPrice(discountAmount)}</dd>
                   </div>
                 )}
                 <div className="flex justify-between">
-                  <dt className="text-white/50">Livraison</dt>
-                  <dd>{shipping === 0 ? <span className="text-[var(--color-neon)]">Offerte</span> : formatPrice(shipping)}</dd>
+                  <dt className="text-gray-500">Livraison</dt>
+                  <dd className="text-black">{shipping === 0 ? <span className="text-black">Offerte</span> : formatPrice(shipping)}</dd>
                 </div>
-                <div className="flex items-end justify-between border-t border-white/10 pt-3">
-                  <dt className="text-sm font-bold uppercase tracking-wider">Total</dt>
-                  <dd className="font-display text-3xl text-neon">{formatPrice(total)}</dd>
+                <div className="flex items-end justify-between border-t border-gray-300 pt-3">
+                  <dt className="text-sm font-bold uppercase tracking-wider text-black">Total</dt>
+                  <dd className="font-display text-3xl text-black">{formatPrice(total)}</dd>
                 </div>
               </dl>
 
-              <p className="mt-4 flex items-start gap-2 text-xs text-white/45">
-                <Check size={14} className="mt-0.5 shrink-0 text-[var(--color-neon)]" />
+              <p className="mt-4 flex items-start gap-2 text-xs text-gray-400">
+                <Check size={14} className="mt-0.5 shrink-0 text-black" />
                 Paiement de démonstration : aucune carte n'est débitée, aucune donnée n'est
                 envoyée.
               </p>

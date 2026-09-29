@@ -32,28 +32,28 @@ export default function Header({ onCartClick }) {
   return (
     <>
       {/* Bandeau promo */}
-      <div className="relative z-40 bg-[var(--color-neon)] py-1.5 text-center text-[11px] font-extrabold uppercase tracking-widest text-[var(--color-bg)] md:text-xs">
+      <div className="relative z-40 border-b border-gray-200 bg-gray-50 py-1.5 text-center text-[11px] font-semibold uppercase tracking-widest text-gray-600 md:text-xs">
         <span className="inline-flex items-center gap-2">
-          <Zap size={13} className="animate-bounce" />
+          <Zap size={13} className="animate-pulse" />
           Livraison offerte dès 50 € — Code BLACKFRIDAY = -10% supplémentaires
-          <Zap size={13} className="animate-bounce" />
+          <Zap size={13} className="animate-pulse" />
         </span>
       </div>
 
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`sticky top-0 z-40 transition-base ${
           scrolled
-            ? 'border-b border-white/10 bg-[var(--color-bg)]/90 backdrop-blur-xl'
-            : 'border-b border-transparent bg-[var(--color-bg)]/40 backdrop-blur-sm'
+            ? 'border-b border-gray-200 bg-white/90 backdrop-blur-xl'
+            : 'border-b border-transparent bg-transparent'
         }`}
       >
         <div className="container-x flex h-16 items-center justify-between gap-4 md:h-20">
           <Link to="/" className="group flex items-center gap-2" aria-label="Black Friday — accueil">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-neon font-display text-lg text-black transition-transform group-hover:rotate-12">
+            <span className="grid h-9 w-9 place-items-center rounded-md bg-black font-display text-lg text-white transition-transform group-hover:rotate-6">
               BF
             </span>
-            <span className="display text-xl leading-none text-white md:text-2xl">
-              Black<span className="text-neon">Friday</span>
+            <span className="display-tight text-xl leading-none text-black md:text-2xl">
+              Black<span className="text-black">Friday</span>
             </span>
           </Link>
 
@@ -63,10 +63,9 @@ export default function Header({ onCartClick }) {
                 key={n.label}
                 to={n.to}
                 className={({ isActive }) =>
-                  `relative text-xs font-extrabold uppercase tracking-[0.18em] transition-colors hover:text-neon ${
-                    isActive && n.to === '/' ? 'text-neon' : 'text-white/70'
-                  }`
-                }
+                  `relative text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-gray-700 ${
+                    isActive && n.to === '/' ? 'text-black' : 'text-gray-500'
+                  }`}
               >
                 {n.label}
               </NavLink>
@@ -76,7 +75,7 @@ export default function Header({ onCartClick }) {
           <div className="flex items-center gap-2">
             <Link
               to="/boutique"
-              className="hidden rounded-full border border-neon/50 px-5 py-2 text-xs font-extrabold uppercase tracking-widest text-neon transition-all hover:bg-neon hover:text-black sm:inline-flex"
+              className="hidden rounded-md border border-gray-300 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-600 transition-colors hover:bg-gray-50 hover:border-gray-400 sm:inline-flex"
             >
               -70% maintenant
             </Link>
@@ -85,15 +84,15 @@ export default function Header({ onCartClick }) {
               type="button"
               onClick={onCartClick}
               aria-label={`Panier, ${count} article${count > 1 ? 's' : ''}`}
-              className="relative grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-white/15 bg-white/5 transition-colors hover:border-neon hover:text-neon"
+              className="relative grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-gray-300 bg-white transition-colors hover:border-gray-400 hover:bg-gray-50"
             >
-              <ShoppingBag size={19} />
+              <ShoppingBag size={19} className="text-black" />
               {count > 0 && (
                 <motion.span
                   key={count}
                   initial={{ scale: 0.4 }}
                   animate={{ scale: 1 }}
-                  className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[var(--color-neon)] px-1 text-[10px] font-black text-[var(--color-bg)]"
+                  className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-black px-1 text-[10px] font-black text-white"
                 >
                   {count}
                 </motion.span>
@@ -105,9 +104,9 @@ export default function Header({ onCartClick }) {
               onClick={() => setOpen((v) => !v)}
               aria-label="Menu"
               aria-expanded={open}
-              className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-white/15 bg-white/5 md:hidden"
+              className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-gray-300 bg-white md:hidden"
             >
-              {open ? <X size={19} /> : <Menu size={19} />}
+              {open ? <X size={19} className="text-black" /> : <Menu size={19} className="text-black" />}
             </button>
           </div>
         </div>
@@ -116,7 +115,7 @@ export default function Header({ onCartClick }) {
           <motion.nav
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
-            className="overflow-hidden border-t border-white/10 bg-[var(--color-bg)] md:hidden"
+            className="overflow-hidden border-t border-gray-200 bg-white md:hidden"
             aria-label="Navigation mobile"
           >
             <div className="container-x flex flex-col gap-1 py-4">
@@ -125,7 +124,7 @@ export default function Header({ onCartClick }) {
                   key={n.label}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-sm font-extrabold uppercase tracking-widest text-white/80 hover:bg-white/5 hover:text-neon"
+                  className="rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:bg-gray-50 hover:text-black"
                 >
                   {n.label}
                 </NavLink>
@@ -133,7 +132,7 @@ export default function Header({ onCartClick }) {
               <Link
                 to="/panier"
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-extrabold uppercase tracking-widest text-neon"
+                className="rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-wider text-black"
               >
                 Panier ({count})
               </Link>
